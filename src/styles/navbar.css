@@ -80,7 +80,7 @@
   z-index: 5;
 }
 
-.ttom-navigation .action-btn {
+.mobile-bottom-navigation .action-btn {
   position: relative;
   font-size: 26px;
   color: var(--eerie-black);
@@ -156,7 +156,7 @@
   font-size: 22px;
 }
 
-.menu-close-btn ion-icon { --ionicon-stroke-width: 50px; }
+.menu-close-btn .ion-icon { --ionicon-stroke-width: 50px; }
 
 .mobile-menu-category-list { margin-bottom: 30px; }
 
@@ -187,7 +187,7 @@
 
 .accordion-menu > div { font-size: 14px; }
 
-.accordion-menu ion-icon {
+.accordion-menu .ion-icon {
   color: var(--onyx);
   --ionicon-stroke-width: 90px;
 }
