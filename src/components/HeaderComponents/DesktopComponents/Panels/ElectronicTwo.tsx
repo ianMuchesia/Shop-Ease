@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import React from 'react'
 
 const ElectronicTwo = () => {
@@ -29,8 +30,8 @@ const ElectronicTwo = () => {
 
     <li className="panel-list-item">
       <a href="#">
-        <img
-          src="./assets/images/electronics-banner-2.jpg"
+        <Image
+          src="/images/electronics-banner-2.jpg"
           alt="mouse collection"
           width="250"
           height="119"

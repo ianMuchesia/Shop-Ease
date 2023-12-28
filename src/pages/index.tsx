@@ -2,6 +2,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
+import { Banner, Category, ProductFeatured, ProductGrid, ProductMinimal } from '@/HomeSections'
+import Sidebar from '@/Sidebar'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,8 +17,30 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       
+    <Banner/>
+    <Category/>
 
+    {/* 
+    
+-- PRODUCT CONTAINER
+
+    */}
+
+<div className="product-container">
+
+<div className="container">
+  <Sidebar/>
+
+  <div className="product-box">
+    <ProductMinimal/>
+    <ProductFeatured/>
+    <ProductGrid/>
+  </div>
+  </div>
+  </div>
       
     </>
   )
 }
+
+

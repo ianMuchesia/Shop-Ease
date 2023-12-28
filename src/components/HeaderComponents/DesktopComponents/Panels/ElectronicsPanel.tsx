@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import React from 'react'
 
 const ElectronicsPanel = () => {
@@ -29,8 +30,8 @@ const ElectronicsPanel = () => {
 
     <li className="panel-list-item">
       <a href="#">
-        <img
-          src="./assets/images/electronics-banner-1.jpg"
+        <Image
+          src="/images/electronics-banner-1.jpg"
           alt="headphone collection"
           width="250"
           height="119"

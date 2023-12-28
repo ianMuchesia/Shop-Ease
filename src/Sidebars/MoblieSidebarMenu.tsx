@@ -7,29 +7,33 @@ import {
   IoLogoLinkedin,
   IoLogoTwitter,
 } from "react-icons/io5";
-import MensMobileCategory from "./MensMobileCategory";
-import WomensMobileCategory from "./WomensMobileCategory";
-import JewelryMobileCategory from "./JewelryMobileCategory";
+import MensMobileCategory from "../components/HeaderComponents/MobileComponents/MensMobileCategory";
+import WomensMobileCategory from "../components/HeaderComponents/MobileComponents/WomensMobileCategory";
+import JewelryMobileCategory from "../components/HeaderComponents/MobileComponents/JewelryMobileCategory";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { closeSidebar } from "@/store/features/sidebarsSlice";
 
-interface MobileSideBarMenuProps {
-  openSidebar: boolean;
-  setOpenSidebar: (openSidebar: boolean) => void;
-}
-const MobileSideBarMenu = ({
-  openSidebar,
-  setOpenSidebar,
-}: MobileSideBarMenuProps) => {
 
+const MobileSideBarMenu = () => {
+
+  const dispatch = useAppDispatch()
+
+  const isOpenSidebar  = useAppSelector(state => state.sidebars.sidebars.menu.isOpen)
+
+
+  const handleCloseSidebar = () => {
+    dispatch(closeSidebar("menu"))
+  }
 
   
 
 
   return (
-    <nav className={`mobile-navigation-menu has-scrollbar ${openSidebar && 'active'}`} data-mobile-menu>
+    <nav className={`mobile-navigation-menu has-scrollbar ${isOpenSidebar && 'active'}`} data-mobile-menu>
       <div className="menu-top">
         <h2 className="menu-title">Menu</h2>
 
-        <button className="menu-close-btn" data-mobile-menu-close-btn onClick={()=>{setOpenSidebar(false)}}>
+        <button className="menu-close-btn" data-mobile-menu-close-btn onClick={handleCloseSidebar}>
           <IoCloseOutline />
         </button>
       </div>

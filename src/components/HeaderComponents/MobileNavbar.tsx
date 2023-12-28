@@ -1,17 +1,20 @@
 import React, { useEffect } from "react";
 import MobileBottom from "./MobileComponents/MobileBottom";
-import MobileSidebarMenu from "./MobileComponents/MoblieSidebarMenu";
+import MobileSidebarMenu from "../../Sidebars/MoblieSidebarMenu";
+import { useAppSelector } from "@/store/hooks";
 
 const MobileNavbar = () => {
-  const [openSidebar, setOpenSidebar] = React.useState(false);
+
+  const darken = useAppSelector(state=>state.sidebars.darkenBackground)
+    
 
 
   
-//this is to add the class active to the overlay when the sidebar is open
+
   useEffect(() => {
     const overlay = document.querySelector(".overlay");
 
-    if (openSidebar) {
+    if (darken) {
       if (overlay) {
         overlay.classList.add("active");
         console.log("hello")
@@ -25,15 +28,12 @@ const MobileNavbar = () => {
     // return () => {
     //   if (overlay) overlay.classList.remove("active");
     // };
-  }, [openSidebar]);
+  }, [darken]);
 
   return (
     <>
-      <MobileBottom  setOpenSidebar={setOpenSidebar}/>
-      <MobileSidebarMenu
-        openSidebar={openSidebar}
-        setOpenSidebar={setOpenSidebar}
-      />
+      <MobileBottom />
+      <MobileSidebarMenu />
     </>
   );
 };
