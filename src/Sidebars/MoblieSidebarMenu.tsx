@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   IoCaretBackOutline,
   IoCloseOutline,
@@ -7,16 +7,19 @@ import {
   IoLogoLinkedin,
   IoLogoTwitter,
 } from "react-icons/io5";
-import MensMobileCategory from "../components/HeaderComponents/MobileComponents/MensMobileCategory";
-import WomensMobileCategory from "../components/HeaderComponents/MobileComponents/WomensMobileCategory";
-import JewelryMobileCategory from "../components/HeaderComponents/MobileComponents/JewelryMobileCategory";
+
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { closeSidebar } from "@/store/features/sidebarsSlice";
+import {menuAccordions} from "@/lib/data"
+import MenuAccordions from "@/components/Accordions/MenuAccordions";
+
 
 
 const MobileSideBarMenu = () => {
 
   const dispatch = useAppDispatch()
+
+  const [ activeAccordion, setActiveAccordion] = useState<string|null>(null)
 
   const isOpenSidebar  = useAppSelector(state => state.sidebars.sidebars.menu.isOpen)
 
@@ -45,11 +48,18 @@ const MobileSideBarMenu = () => {
           </a>
         </li>
 
-        <MensMobileCategory />
-
-        <WomensMobileCategory />
-
-        <JewelryMobileCategory />
+{
+  menuAccordions.map(accordion=>(
+    <MenuAccordions
+    key={accordion.id}
+    title={accordion.title}
+    content={accordion.content}
+    isActive={activeAccordion === accordion.title}
+    setAccordion={setActiveAccordion}
+    />
+  ))
+}
+        
 
         <li className="menu-category">
           <a href="#" className="menu-title">

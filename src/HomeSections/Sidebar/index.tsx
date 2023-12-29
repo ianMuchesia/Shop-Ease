@@ -1,7 +1,7 @@
 import React from "react";
-import SidebarCategory from "./SidebarCategory";
+import SidebarCategory from "../../Sidebars/SidebarCategory";
 import {  useAppSelector } from "@/store/hooks";
-import ProductShowCase from "./ProductShowCase";
+import ProductShowCase from "../../Sidebars/ProductShowCase";
 
 const Sidebar = () => {
 

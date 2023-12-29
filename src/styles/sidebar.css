@@ -64,7 +64,7 @@
   font-weight: var(--weight-600);
 }
 
-.sidebar-close-btn ion-icon { --ionicon-stroke-width: 50px; }
+.sidebar-close-btn .ion-icon { --ionicon-stroke-width: 50px; }
 
 .sidebar-accordion-menu {
   width: 100%;
@@ -101,7 +101,7 @@
   font-weight: var(--weight-500);
 }
 
-.sidebar-accordion-menu ion-icon {
+.sidebar-accordion-menu .ion-icon {
   color: var(--sonic-silver);
   font-size: 14px;
   --ionicon-stroke-width: 70px;

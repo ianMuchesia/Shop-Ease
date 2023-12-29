@@ -6,6 +6,7 @@ import "@/styles/modal.css";
 import "@/styles/notification.css";
 import "@/styles/home.css";
 import "@/styles/sidebar.css";
+import "@/styles/footer.css";
 import type { AppProps } from "next/app";
 import { Provider } from "react-redux";
 import store from "@/store/store";

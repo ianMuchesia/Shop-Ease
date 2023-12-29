@@ -24,7 +24,7 @@ const Modal = () => {
 
       <div className="newsletter-img">
         <Image src="/images/newsletter.png" alt="subscribe newsletter" width="400" height="400"/>
-      </div>
+      </div> 
 
       <div className="newsletter">
 
