@@ -1,4 +1,7 @@
+import { openSidebar } from '@/store/features/sidebarsSlice';
+import { useAppDispatch } from '@/store/hooks';
 import Image from 'next/image'
+import Link from 'next/link';
 import React from 'react'
 
 
@@ -7,17 +10,14 @@ import { IoBagOutline,  IoHeartOutline, IoPerson, IoPersonOutline, IoSearch, IoS
 
 
 const MainHeader = () => {
+
+  const dispatch = useAppDispatch()
   return (
     <div className="header-main">
     <div className="container">
-      <a href="#" className="header-logo">
-        <Image
-          src="/images/logo/logo.svg"
-          alt="Anon's logo"
-          width={120}
-          height={36}
-        />
-      </a>
+      <Link href="/" className="header-logo">
+      <h1>ShopEase</h1>
+      </Link>
 
       <div className="header-search-container">
         <input
@@ -42,7 +42,7 @@ const MainHeader = () => {
           <span className="count">0</span>
         </button>
 
-        <button className="action-btn">
+        <button className="action-btn" onClick={()=>{dispatch(openSidebar("cart"))}}>
         <IoBagOutline />
 
           <span className="count">0</span>

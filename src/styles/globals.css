@@ -12,13 +12,23 @@
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+        
 }
+
 
 :root {
    /**
    * colors
    */
-
+   /* --pink-100: #f2daf2;
+    --pink-200: #e5b5e5;
+    --pink-300: #d791d7;
+    --pink-400: #ca6cca;
+    --pink-500: #bd47bd;
+    --pink-600: #973997;
+    --pink-700: #712b71;
+    --pink-800: #4c1c4c;
+    --pink-900: #260e26; */
    --spanish-gray: hsl(0, 0%, 60%);
    --sonic-silver: hsl(0, 0%, 47%);
    --eerie-black: hsl(0, 0%, 13%);

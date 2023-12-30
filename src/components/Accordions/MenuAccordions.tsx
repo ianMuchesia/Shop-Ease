@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react'
 import { IoAddCircleOutline, IoRemoveCircleOutline } from 'react-icons/io5'
 
@@ -20,7 +21,7 @@ const MenuAccordions = ({title, content,isActive,setAccordion}:AccordionProps) =
     <ul className={`submenu-category-list ${isActive ? 'active' : ''}`}>
       {content.map((item, index) => (
         <li key={index} className="submenu-category">
-          <a href="#" className="submenu-title">{item}</a>
+          <Link href="#" className="submenu-title">{item}</Link>
         </li>
       ))}
     </ul>

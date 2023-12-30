@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useState } from "react";
 import { IoAddOutline, IoRemoveOutline } from "react-icons/io5";
 
 interface CategoryAccordionsProps {
@@ -17,7 +18,9 @@ const CategoryAccordions = ({
   setAccordion,
 }: CategoryAccordionsProps) => {
 
-  console.log(content)
+
+  
+
   return (
     <li className="sidebar-menu-category">
       <button className="sidebar-accordion-menu" data-accordion-btn>
@@ -34,20 +37,20 @@ const CategoryAccordions = ({
         </div>
 
         <div>
-          {!isActive ? (
+          {!isActive ?
             <IoAddOutline
               className="ion-icon add-icon"
-              onClick={() => setAccordion(title)}
+              onClick={() => {setAccordion(title)}}
             />
-          ) : (
-            <IoRemoveOutline className="ion-icon remove-icon" 
-            onClick={()=>setAccordion(null)}
-            />
-          )}
+
+           :<IoRemoveOutline className="ion-icon remove-icon" 
+            onClick={()=>{ setAccordion(null);}}
+            />}
+          
         </div>
       </button>
 
-      <ul className="sidebar-submenu-category-list" data-accordion>
+      <ul className={`sidebar-submenu-category-list ${isActive && "active"}`}  data-accordion>
         {content.map((item, index) => (
           <li className="sidebar-submenu-category" key={index}>
             <a href="#" className="sidebar-submenu-title">
@@ -58,6 +61,7 @@ const CategoryAccordions = ({
             </a>
           </li>
         ))}
+      
       </ul>
     </li>
   );

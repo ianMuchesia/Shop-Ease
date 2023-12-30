@@ -3,7 +3,11 @@ import SidebarCategory from "../../Sidebars/SidebarCategory";
 import {  useAppSelector } from "@/store/hooks";
 import ProductShowCase from "../../Sidebars/ProductShowCase";
 
-const Sidebar = () => {
+interface sidebarProps {
+  product_detail?: boolean;
+}
+
+const Sidebar = ({product_detail}:sidebarProps) => {
 
 
 
@@ -12,7 +16,7 @@ const Sidebar = () => {
 
   return (
     <>
-        <div className={`sidebar  has-scrollbar ${isOpen && "active"}`} data-mobile-menu>
+        <div className={`sidebar  has-scrollbar ${isOpen && "active"} ${product_detail && "product_detail"}`} data-mobile-menu>
 
       <SidebarCategory />
       <ProductShowCase/>

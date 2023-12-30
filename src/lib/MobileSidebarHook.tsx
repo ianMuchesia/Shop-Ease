@@ -13,7 +13,7 @@ const MobileSidebarHook = () => {
         if (openSidebar) {
           if (overlay) {
             overlay.classList.add("active");
-            console.log("hello")
+            
           }
         } else {
           if (overlay) {

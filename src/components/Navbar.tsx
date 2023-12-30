@@ -3,6 +3,7 @@ import TopHeader from './HeaderComponents/TopHeader'
 import MainHeader from './HeaderComponents/MainHeader'
 import DesktopNavbar from './HeaderComponents/DesktopNavbar'
 import MobileNavbar from './HeaderComponents/MobileNavbar'
+import Cart from './Cart/Cart'
 
 const Navbar = () => {
   return (
@@ -11,6 +12,7 @@ const Navbar = () => {
   <MainHeader/>
   <DesktopNavbar/>
   <MobileNavbar/>
+  <Cart/>
    </>
   )
 }

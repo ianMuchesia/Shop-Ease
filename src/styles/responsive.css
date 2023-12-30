@@ -914,6 +914,10 @@
     z-index: 0!important;
   }
 
+  .sidebar.product_detail{
+    display: none;
+  }
+
   .sidebar-category {
     padding: 20px;
     margin-bottom: 30px;

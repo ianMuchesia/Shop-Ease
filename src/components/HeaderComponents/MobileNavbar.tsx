@@ -17,7 +17,7 @@ const MobileNavbar = () => {
     if (darken) {
       if (overlay) {
         overlay.classList.add("active");
-        console.log("hello")
+       
       }
     } else {
       if (overlay) {

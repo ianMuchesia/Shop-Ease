@@ -282,7 +282,7 @@ const Footer = () => {
         <Image  height={30} width={300} src="/images/payment.png" alt="payment method" className="payment-img"/>
 
         <p className="copyright">
-          Copyright &copy; <a href="#">Msodoki</a> all rights reserved. <p>{new Date().getFullYear()}</p>
+          Copyright &copy; <a href="#">Msodoki</a> all rights reserved. <span>{new Date().getFullYear()}</span>
         </p>
 
       </div>

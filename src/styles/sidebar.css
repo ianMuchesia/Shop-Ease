@@ -145,11 +145,11 @@
 
 .sidebar .product-name { text-transform: capitalize; }
 
-.sidebar-accordion-menu.active .add-icon,
+/* .sidebar-accordion-menu.active .add-icon,
 .sidebar-accordion-menu .remove-icon { display: none; }
 
 .sidebar-accordion-menu .add-icon,
-.sidebar-accordion-menu.active .remove-icon { display: block; }
+.sidebar-accordion-menu.active .remove-icon { display: block; } */
 
 .sidebar .showcase-heading {
   font-size: var(--fs-5);

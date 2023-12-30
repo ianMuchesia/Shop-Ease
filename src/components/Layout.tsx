@@ -15,8 +15,7 @@ const Layout = ({ children }: LayoutProps) => {
         <title>Ecommerce</title>
       </Head>
       <div className="overlay"></div>
-      <Notification/>
-      <Modal />
+    
       <header>
         <Navbar />
       </header>
