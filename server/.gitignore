@@ -1,0 +1,36 @@
+# Byte-compiled files
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+
+# Environment variables file (if you're using one)
+.env
+
+# Compiled Python files
+*.pyc
+*.pyo
+*.pyd
+
+# Log files
+*.log
+
+# IDE specific files
+.vscode/
+.idea/
+
+# Dependency directories
+lib/
+lib64/
+__pycache__/
+
+# Docker files (if you're using Docker)
+# Dockerfile
+# docker-compose.yml
+
+# Editor temporary files
+*~
+
+# Ignore the database file if you're using SQLite
+db.sqlite3
