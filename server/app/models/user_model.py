@@ -4,7 +4,7 @@ from sqlalchemy.orm import relationship
 
 
 
-class User(Base, BaseModel):
+class User(BaseModel, Base):
     __tablename__ = 'users'
 
     #internal id and id here
@@ -13,8 +13,7 @@ class User(Base, BaseModel):
     password = Column(String, nullable=False)
     
     phone = Column(String, nullable=False,unique=True)
-    role = Column(Enum('admin', 'customer'), nullable=False)
-    status = Column(Enum('active', 'inactive'), nullable=False)
+    role = Column(Enum('admin', 'customer',name="role_enum"), nullable=False,default="customer")
     
     @classmethod
     def before_update_listener(cls, mapper, connection, target):

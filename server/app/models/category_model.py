@@ -22,7 +22,7 @@ class NewArrivals(BaseModel, Base):
     __tablename__ = 'new_arrivals'
     
     #internal id and id here
-    product = Column(String, ForeignKey('products.id'), nullable=False)
+    product = Column(String, ForeignKey('products.id'), nullable=False,unique=True)
     
     product_rel = relationship("Product")
     
@@ -40,7 +40,7 @@ class Trending(BaseModel, Base):
     __tablename__ = 'trending'
     
     #internal id and id here
-    product = Column(String, ForeignKey('products.id'), nullable=False)
+    product = Column(String, ForeignKey('products.id'), nullable=False,unique=True)
     
     product_rel = relationship("Product")
     
@@ -57,7 +57,7 @@ class Rated(BaseModel, Base):
     __tablename__ = 'rated'
     
     #internal id and id here
-    product = Column(String, ForeignKey('products.id'), nullable=False)
+    product = Column(String, ForeignKey('products.id'), nullable=False, unique=True)
     
     product_rel = relationship("Product")
     

@@ -11,7 +11,7 @@ class Product(BaseModel, Base):
     name = Column(String, nullable=False)
     description = Column(String, nullable=False)
     price = Column(Integer, nullable=False)
-    gender = Column(Enum('M', 'F',name='gender_enum'), nullable=False)
+    gender = Column(Enum('M','U' ,'F',name='gender_enum'), nullable=False)
     rating = Column(Integer, nullable=False)
     category = Column(String,ForeignKey('categories.id'), nullable=False)
     

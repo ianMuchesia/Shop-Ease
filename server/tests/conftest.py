@@ -10,7 +10,7 @@ from app.models.product_model import Product
 from app.models.category_model import Category
 
 
-SQLALCHEMY_DATABASE_URL = "postgresql://postgres:password@localhost:5432/jobs"
+SQLALCHEMY_DATABASE_URL = "postgresql://postgres:password@localhost:5432/shop_ease"
 
 
 

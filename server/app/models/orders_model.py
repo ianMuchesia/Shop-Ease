@@ -8,14 +8,14 @@ from sqlalchemy.orm import relationship
 
 
 
-class Orders(Base, BaseModel):
+class Orders( BaseModel, Base):
     __tablename__ = 'orders'
 
     #internal id and id here
     product = Column(String, ForeignKey('products.id'), nullable=False)
   
     total = Column(Integer, nullable=False)
-    status = Column(Enum('pending', 'paid'), nullable=False)
+    status = Column(Enum('pending', 'paid',name="status_enum"), nullable=False)
     user = Column(String, ForeignKey('users.id'), nullable=False)
     
     
@@ -31,7 +31,7 @@ class Orders(Base, BaseModel):
 event.listen(Orders, 'before_update', Orders.before_update_listener)
     
     
-class OrderItem(Base, BaseModel):
+class OrderItem(BaseModel, Base):
     __tablename__ = 'order_items'
 
     #internal id and id here
