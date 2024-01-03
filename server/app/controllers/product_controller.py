@@ -23,3 +23,33 @@ def read_product(product_id: str, db: Session):
     
     
     return product
+
+
+
+def update_product(product_id: str, db: Session, product: Product):
+        
+        product_exists = db.query(Product).filter(Product.id == product_id).first()
+        
+        if not product_exists:
+            raise NotFoundError(f"Product with id {product_id} not found")
+            
+        db.query(Product).filter(Product.id == product_id).update({"name": product.name, "description": product.description, "price": product.price, "category": product.category})
+        db.commit()
+        
+        return db.query(Product).filter(Product.id == product_id).first()
+    
+    
+    
+def delete_product(product_id: str, db: Session):
+        
+        product_exists = db.query(Product).filter(Product.id == product_id).first()
+        
+        if not product_exists:
+            raise NotFoundError(f"Product with id {product_id} not found")
+            
+        db.query(Product).filter(Product.id == product_id).delete()
+        db.commit()
+        
+        return {"message": f"Product with id {product_id} deleted successfully"}
+    
+    

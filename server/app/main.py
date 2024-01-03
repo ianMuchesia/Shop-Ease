@@ -39,4 +39,4 @@ app.include_router(auth_router.router)
 
 @app.get("/")
 async def root():
-    return {"message": "Welcome to the API"}
+    return {"message": "Welcome to ShopEase API"}

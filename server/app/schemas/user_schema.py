@@ -8,22 +8,24 @@ class UserBase(BaseModel):
     name: str
     email: EmailStr
     phone: str
-    role: str
-    status: str
+   
+
     
 class UserCreate(UserBase):
     password: str
     name: str
     email: EmailStr
     phone: str
+   
     
     
 class UserResponse(UserBase):
     model_config = ConfigDict(from_attributes = True)
     id: str
     name: str
-    created_at: datetime
-    updated_at: datetime
+    # created_at: datetime
+    # updated_at: datetime
+    role:str
     
 class UserUpdate(UserBase):
     pass
