@@ -27,10 +27,13 @@ def read_all_categories(db: Session):
 
 def create_category(category: Category, db: Session):
     db_category = Category(**category.model_dump())
+    category_exists = db.query(Category).filter(Category.name == category.name).first()
+    if category_exists:
+        raise BadRequestError(f"Category with name {category.name} already exists")
     db.add(db_category)
     db.commit()
     db.refresh(db_category)
-    return {"message": "Category created successfully"}
+    return {"msg": "Category created successfully"}
 
 
 
@@ -53,17 +56,16 @@ def create_trending(trending: Trending, db: Session):
     db.add(db_trending)
     db.commit()
     db.refresh(db_trending)
-    return db_trending
+    return {"msg":"category created successfully"}
 
 
 def remove_trending(trending_id: str, db: Session):
-    trending = db.query(Trending).filter(Trending.id == trending_id).first()
+    trending = db.query(Trending).filter(Trending.product== trending_id).first()
     if not trending:
         raise NotFoundError(f"Trending with id {trending_id} not found")
     db.delete(trending)
     db.commit()
-    return {"message": "Trending deleted successfully"}
-
+    return {"msg": "Trending Product deleted successfully"}
 
 #new arrivals controllers
 def read_new_arrivals(db: Session):
@@ -83,17 +85,17 @@ def create_rated(rated: Rated, db: Session):
     db.add(db_rated)
     db.commit()
     db.refresh(db_rated)
-    return {"message": "Rated created successfully"}
+    return {"msg": "Rated created successfully"}
 
 def read_rated(db: Session):
     rated = db.query(Rated).all()
-    print(rated)
+   
     return rated
 
 def remove_rated(rated_id: str, db: Session):
-    rated = db.query(Rated).filter(Rated.id == rated_id).first()
+    rated = db.query(Rated).filter(Rated.product == rated_id).first()
     if not rated:
         raise NotFoundError(f"Rated with id {rated_id} not found")
     db.delete(rated)
     db.commit()
-    return {"message": "Rated deleted successfully"}
+    return {"msg": "Rated deleted successfully"}

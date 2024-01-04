@@ -8,7 +8,7 @@ class Category(BaseModel, Base):
     __tablename__ = 'categories'
     
     #internal id and id here
-    name = Column(String, nullable=False)
+    name = Column(String, nullable=False, unique=True)
     
     @classmethod
     def before_update_listener(cls, mapper, connection, target):

@@ -16,6 +16,7 @@ class UserCreate(UserBase):
     name: str
     email: EmailStr
     phone: str
+    role:Optional[str] = "customer"
    
     
     

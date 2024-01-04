@@ -7,21 +7,20 @@ from ..utils.check_permission import belongs_to_user
 
 
 #this function is used to create a new order
+#ensure that all changes are committed as a single transaction
 def create_order(db: Session, user:str, order: Orders, order_items: List[OrderItem]):
     
-    db_order = Orders(user=user,total=order.total)
+    db_order = Orders(user=user,total_price=order.total_price)
     db.add(db_order)
-    db.commit()
-    db.refresh(db_order)
+    db.flush()  # Use db.flush() to get the id of db_order without committing the transaction
     
     for item in order_items:
         db_item = OrderItem(order=db_order.id,product=item.product,quantity=item.quantity)
         db.add(db_item)
-        db.commit()
-        db.refresh(db_item)
     
-    
-    return db_order
+    db.commit()
+    db.refresh(db_order)
+    return {"msg": "Order created successfully", "order_id": db_order.id}
 
 
 
@@ -82,9 +81,9 @@ def delete_order_items(order_id: str, db: Session,current_user):
 
 
 #this function is used to delete all orders for a specific user
-def delete_user_orders(user_id: str, db: Session):
+def delete_user_orders(order_id,user_id: str, db: Session):
     
-    orders = db.query(Orders).filter(Orders.user == user_id).all()
+    orders = db.query(Orders).filter(Orders.id == order_id,Orders.user == user_id).all()
     
     if not orders:
         raise NotFoundError(f"Orders for user with id {user_id} not found")
