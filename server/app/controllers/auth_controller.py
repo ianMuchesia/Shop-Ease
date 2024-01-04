@@ -12,7 +12,7 @@ def create_user(user: User, db: Session):
     if userExists:
         raise BadRequestError(f"User with email {user.email} or phone number {user.phone} already exists")
     
-    db_user = User(name=user.name,  email=user.email, password=hash(user.password), phone=user.phone)
+    db_user = User(name=user.name,  email=user.email, password=hash(user.password), phone=user.phone, role=user.role)
     
     db.add(db_user)
     db.commit()
