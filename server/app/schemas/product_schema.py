@@ -7,7 +7,7 @@ from datetime import datetime
 class ProductBase(BaseModel):
     name: str
     description: str
-    category: str
+    category: Optional[str] = None
     price: int
     gender: str
     rating: int
@@ -20,7 +20,7 @@ class ProductCreate(ProductBase):
 
 class ProductResponse(ProductBase):
     model_config = ConfigDict(from_attributes = True)
-    
+    category: Optional[str] = None
     created_at: datetime
     updated_at: datetime
     id: str

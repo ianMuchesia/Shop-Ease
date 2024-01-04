@@ -13,7 +13,7 @@ class Product(BaseModel, Base):
     price = Column(Integer, nullable=False)
     gender = Column(Enum('M','U' ,'F',name='gender_enum'), nullable=False)
     rating = Column(Integer, nullable=False)
-    category = Column(String,ForeignKey('categories.id'), nullable=False)
+    category = Column(String,ForeignKey('categories.id'), nullable=True)
     
     category_rel = relationship("Category")
     

@@ -26,7 +26,7 @@ class CategoryResponse(CategoryBase):
     model_config = ConfigDict(from_attributes = True)
  
     id: str
-    products: List[ProductResponse]
+    product_rel: ProductResponse
     
     
 class NewArrivalsBase(BaseModel):
@@ -52,7 +52,8 @@ class TrendingResponse(TrendingBase):
     model_config = ConfigDict(from_attributes = True)
  
     id: str
-    product: List[ProductResponse]
+    # product: str
+    product_rel:ProductResponse
     
     
 class RatedBase(BaseModel):
@@ -61,8 +62,8 @@ class RatedBase(BaseModel):
 class RatedCreate(RatedBase):
     pass
 
-class RatedResponse(RatedBase):
+class RatedResponse(BaseModel):
     model_config = ConfigDict(from_attributes = True)
  
     id: str
-    product: str
+    product_rel:ProductResponse

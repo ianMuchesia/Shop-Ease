@@ -53,16 +53,16 @@ def create_trending(trending: Trending, db: Session):
     db.add(db_trending)
     db.commit()
     db.refresh(db_trending)
-    return db_trending
+    return {"msg":"category created successfully"}
 
 
 def remove_trending(trending_id: str, db: Session):
-    trending = db.query(Trending).filter(Trending.id == trending_id).first()
+    trending = db.query(Trending).filter(Trending.product== trending_id).first()
     if not trending:
         raise NotFoundError(f"Trending with id {trending_id} not found")
     db.delete(trending)
     db.commit()
-    return {"message": "Trending deleted successfully"}
+    return {"message": "Trending Product deleted successfully"}
 
 
 #new arrivals controllers
@@ -87,11 +87,11 @@ def create_rated(rated: Rated, db: Session):
 
 def read_rated(db: Session):
     rated = db.query(Rated).all()
-    print(rated)
+   
     return rated
 
 def remove_rated(rated_id: str, db: Session):
-    rated = db.query(Rated).filter(Rated.id == rated_id).first()
+    rated = db.query(Rated).filter(Rated.product == rated_id).first()
     if not rated:
         raise NotFoundError(f"Rated with id {rated_id} not found")
     db.delete(rated)

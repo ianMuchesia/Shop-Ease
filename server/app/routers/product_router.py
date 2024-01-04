@@ -12,7 +12,7 @@ router = APIRouter(
 )
 
 
-@router.get("/")
+@router.get("/",response_model=List[ProductResponse])
 def get_products(db=Depends(get_db)):
     return read_products(db)
 

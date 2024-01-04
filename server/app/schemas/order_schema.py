@@ -1,23 +1,23 @@
 from pydantic import BaseModel, ConfigDict, EmailStr
 from typing import List
 from datetime import datetime
+from .product_schema import ProductResponse
+from typing import Optional
 
 
 
 class OrderBase(BaseModel):
-    user: str
-    total: int
+    total_price: int
     
     
 class OrderItemBase(BaseModel):
-    order: str
     product: str
     quantity: int
     
     
 class OrderCreate(OrderBase):
-    user: str
-    total: int
+    
+    products:List[OrderItemBase]
     
     
 class OrderItemCreate(OrderItemBase):
@@ -29,7 +29,8 @@ class OrderItemResponse(OrderItemBase):
     
     created_at: datetime
     updated_at: datetime
-    id: str
+    product_rel:ProductResponse
+
 
 class OrderResponse(OrderBase):
     model_config = ConfigDict(from_attributes = True)
@@ -37,7 +38,9 @@ class OrderResponse(OrderBase):
     created_at: datetime
     updated_at: datetime
     id: str
-    order_items: List[OrderItemResponse]
+    #optional
+    # order_items: Optional[List[OrderItemResponse]]
+  
     
     
     

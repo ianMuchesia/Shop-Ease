@@ -12,16 +12,15 @@ class Orders( BaseModel, Base):
     __tablename__ = 'orders'
 
     #internal id and id here
-    product = Column(String, ForeignKey('products.id'), nullable=False)
   
-    total = Column(Integer, nullable=False)
-    status = Column(Enum('pending', 'paid',name="status_enum"), nullable=False)
+    total_price = Column(Integer, nullable=False)
+    status = Column(Enum('pending', 'paid', name="status_enum"), nullable=False, default='pending')
     user = Column(String, ForeignKey('users.id'), nullable=False)
     
     
-    product_rel = relationship("Product")
     user_rel = relationship("User")
-    
+    order_items = relationship("OrderItem", back_populates="order_rel")
+
     @classmethod
     def before_update_listener(cls, mapper, connection, target):
         BaseModel.before_update_listener(mapper, connection, target)
@@ -40,7 +39,7 @@ class OrderItem(BaseModel, Base):
     quantity = Column(Integer, nullable=False)
   
     
-    order_rel = relationship("Orders")
+    order_rel = relationship("Orders", back_populates="order_items")
     product_rel = relationship("Product")
     
     @classmethod
