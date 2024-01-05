@@ -41,27 +41,42 @@ def read_user_orders(user_id: str, db: Session):
     orders = db.query(Orders).filter(Orders.user == user_id).all()
     
     return orders
+
+
+#this function is used to read all order items for a specific order
+def read_user_order_items(user_id: str,order_id:str, db: Session):
+    order_exists = db.query(Orders).filter(Orders.id == order_id).first()   
+    if not order_exists:
+        raise NotFoundError(f"Order with id {order_id} not found")
+    
+    return db.query(OrderItem).filter(OrderItem.order == order_id).all()
     
     
     
 #this function is used to update an order
-def update_order_items(order_id: str, db: Session, order: Orders, order_items: List[OrderItem],current_user):
-    
+def update_order_items(order_id: str, db: Session, order: Orders, order_items: List[OrderItem], current_user):
     order_exists = db.query(Orders).filter(Orders.id == order_id).first()
-    
+
     if not order_exists:
         raise NotFoundError(f"Order with id {order_id} not found")
-    
+
     belongs_to_user(current_user, order_exists.user)
-    
-    db.query(Orders).filter(Orders.id == order_id).update({"user": order.user, "total": order.total})
-    db.commit()
-    
+
+    # Update the order
+    db.query(Orders).filter(Orders.id == order_id).update({"user": current_user.id, "total_price": order.total_price})
+
+    # Delete all existing order items associated with the order
+    db.query(OrderItem).filter(OrderItem.order == order_id).delete()
+
+    # Add the new order items
     for item in order_items:
-        db.query(OrderItem).filter(OrderItem.order == order_id).update({"product": item.product, "quantity": item.quantity})
-        db.commit()
-    
-    return db.query(Orders).filter(Orders.id == order_id).first()
+        new_item = OrderItem(order=order_id, product=item.product, quantity=item.quantity)
+        db.add(new_item)
+
+    # Commit the session to persist all changes to the database
+    db.commit()
+
+    return {"msg": "Order updated successfully", "order_id": order_id}
     
     
     
@@ -77,58 +92,17 @@ def delete_order_items(order_id: str, db: Session,current_user):
     db.query(Orders).filter(Orders.id == order_id).delete()
     db.commit()
     
-    return {"message": f"Order with id {order_id} deleted successfully"}
+    return {"msg": f"Order with id {order_id} deleted successfully"}
 
+def delete_user_orders(order_id, user_id: str, db: Session):
+    order = db.query(Orders).filter(Orders.id == order_id, Orders.user == user_id).first()
 
-#this function is used to delete all orders for a specific user
-def delete_user_orders(order_id,user_id: str, db: Session):
-    
-    orders = db.query(Orders).filter(Orders.id == order_id,Orders.user == user_id).all()
-    
-    if not orders:
-        raise NotFoundError(f"Orders for user with id {user_id} not found")
-        
-    for order in orders:
-        db.query(Orders).filter(Orders.id == order.id).delete()
-        db.commit()
-    
-    return {"message": f"Orders for user with id {user_id} deleted successfully"}
+    if not order:
+        raise NotFoundError(f"Order with id {order_id} for user with id {user_id} not found")
 
+    db.delete(order)
 
-
-#this function is used to add item to an order
-def add_item_to_order(order_id: str, db: Session, order_item: OrderItem, total_price: float,current_user):
-    
-    order_exists = db.query(Orders).filter(Orders.id == order_id).first()
-    
-    if not order_exists:
-        raise NotFoundError(f"Order with id {order_id} not found")
-    
-    belongs_to_user(current_user, order_exists.user)
-        
-    db_item = OrderItem(order=order_id,product=order_item.product,quantity=order_item.quantity)
-    db.add(db_item)
     db.commit()
-    db.refresh(db_item)
-    
-    order_exists.total = total_price
-    db.commit()
-    
-    return db_item
 
+    return {"msg": f"Order with id {order_id} for user with id {user_id} deleted successfully"}
 
-def remove_item_from_order(order_id: str, db: Session, order_item: OrderItem, total_price: float,current_user):
-    
-    order_exists = db.query(Orders).filter(Orders.id == order_id).first()
-    
-    if not order_exists:
-        raise NotFoundError(f"Order with id {order_id} not found")
-        
-    belongs_to_user(current_user, order_exists.user)
-    db.query(OrderItem).filter(OrderItem.order == order_id).filter(OrderItem.product == order_item.product).delete()
-    db.commit()
-    
-    order_exists.total = total_price
-    db.commit()
-    
-    return {"message": f"Item with id {order_item.product} deleted successfully"}

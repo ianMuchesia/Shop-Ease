@@ -36,7 +36,7 @@ async def validation_exception_handler(request:Request, exc:RequestValidationErr
 #this is the error handler for database integrity errors
 def integrity_error_handler(request: Request, exc: IntegrityError):
    
-    # logger.error(exc)
+    logger.error(exc)
 
     return JSONResponse(
         status_code=400,  # Bad Request Error

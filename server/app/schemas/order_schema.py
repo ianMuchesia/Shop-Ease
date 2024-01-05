@@ -19,14 +19,15 @@ class OrderCreate(OrderBase):
     
     products:List[OrderItemBase]
     
+
     
 class OrderItemCreate(OrderItemBase):
     pass
 
 
-class OrderItemResponse(OrderItemBase):
-    model_config = ConfigDict(from_attributes = True)
-    
+class OrderItemResponse(BaseModel):
+   
+    id:str
     created_at: datetime
     updated_at: datetime
     product_rel:ProductResponse
