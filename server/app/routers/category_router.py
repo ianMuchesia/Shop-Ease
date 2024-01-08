@@ -41,7 +41,7 @@ def trending(db: Session = Depends(get_db),response_model=TrendingResponse):
     return read_trending(db)
 
 
-@router.delete("/trending/{trending_id}", status_code=status.HTTP_200_OK)
+@router.delete("/trending/{trending_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_trending(trending_id: str, db: Session = Depends(get_db), current_user = Depends(get_current_admin_user)):
     return remove_trending(trending_id, db)
 
@@ -68,7 +68,7 @@ def post_rated(rated: RatedCreate, db: Session = Depends(get_db), current_user =
 def get_rated(db: Session = Depends(get_db)):
     return read_rated(db)
 
-@router.delete("/rated/{rated_id}", status_code=status.HTTP_200_OK)
+@router.delete("/rated/{rated_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_rated(rated_id: str, db: Session = Depends(get_db), current_user = Depends(get_current_admin_user)):
     return remove_rated(rated_id, db)
 

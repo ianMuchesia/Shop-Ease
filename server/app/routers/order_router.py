@@ -34,7 +34,7 @@ def get_user_order_items(order_id:str, db: Session = Depends(get_db), current_us
     return read_user_order_items(current_user.id,order_id, db)
 
 
-@router.patch("/user/{order_id}")
+@router.patch("/user/{order_id}", status_code=status.HTTP_201_CREATED)
 def update_order(order_id: str, order: OrderCreate, db: Session = Depends(get_db), current_user = Depends(get_current_user)):
     return update_order_items(order_id, db, order,order.products,current_user)
  

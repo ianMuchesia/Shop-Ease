@@ -71,30 +71,30 @@ def test_delete_trending(client):
     
     
     
-# def test_delete_trending_admin(admin_authorized_client):
+def test_delete_trending_admin(admin_authorized_client,test_products):
  
-#     product = {
-#     "id": "sljlkdkjdng-skjgldsjfd",
-#     "name": "Awesome Product 3",
-#     "description": "An incredible product that will amaze you!",
-#     "category": "Electro 3",
-#     "price": 4999,
-#     "gender": "M",
-#     "rating": 4
-#     }
+    product = {
+    "id": "sljlkdkjdng-skjgldsjfd",
+    "name": "Awesome Product 3",
+    "description": "An incredible product that will amaze you!",
+    "category": "Electro 3",
+    "price": 4999,
+    "gender": "M",
+    "rating": 4
+    }
     
-#     admin_authorized_client.post("/products/", json=product)
+    admin_authorized_client.post("/products/", json=product)
    
-#     trending = {
-#         "product":product["id"]
-#     }
-#     res = admin_authorized_client.post("/categories/trending", json=trending)
+    trending = {
+        "product":test_products[0].id
+    }
+    res = admin_authorized_client.post("/categories/trending", json=trending)
+    
+  
    
-#     response = admin_authorized_client.delete(f"/categories/trending/{product['id']}")
-#     print(response.json())
-#     assert response.json() == {
-#         "msg": "Trending removed successfully"
-#     }
+    response = admin_authorized_client.delete(f"/categories/trending/{trending['product']}")
+
+    assert response.status_code == 204
     
 
 def test_get_new_arrivals(client):
@@ -126,16 +126,16 @@ def test_create_rated_admin(admin_authorized_client,test_products):
     
     
     
-# def test_create_rated_duplicate(admin_authorized_client,test_products):
-#     rated={
-#         "product":test_products[0].id
-#     }
-#     res = admin_authorized_client.post("/categories/rated", json=rated)
-#     response = admin_authorized_client.post("/categories/rated", json=rated)
-#     assert response.status_code == 400
-#     assert response.json() == {
-#         "detail": f"Product with id {test_products[0].id} already exists"
-#     }
+def test_create_rated_duplicate(admin_authorized_client,test_products):
+    rated={
+        "product":test_products[0].id
+    }
+    res = admin_authorized_client.post("/categories/rated", json=rated)
+    response = admin_authorized_client.post("/categories/rated", json=rated)
+    assert response.status_code == 400
+    assert response.json() == {
+        "detail": f"Product with id {rated['product']} already exists in rated"
+    }
     
     
 def test_get_rated(client):
@@ -149,14 +149,17 @@ def test_deleted_rated(client):
     assert response.status_code == 403
     assert response.json() == {"detail": "Not authenticated"}
     
-# def test_deleted_rated_admin(admin_authorized_client):
+def test_deleted_rated_admin(admin_authorized_client,test_products):
   
-    
-#     response = admin_authorized_client.delete("/categories/rated/kjhoihsgh")
-#     assert response.status_code == 200
-#     assert response.json() == {
-#         "msg": "Rated removed successfully"
-#     }
+    rated={
+        "product":test_products[0].id
+    }
+    res = admin_authorized_client.post("/categories/rated", json=rated)
+    response = admin_authorized_client.delete(f"/categories/rated/{rated['product']}")
+    assert response.status_code == 204
+    # assert response.json() == {
+    #     "msg": "Rated removed successfully"
+    # }
     
     
 def get_products_by_categories(client):
