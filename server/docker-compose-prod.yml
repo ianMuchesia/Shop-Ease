@@ -1,0 +1,37 @@
+version: "3"
+services:
+  api:
+      image: ianmuchesia/shop_ease
+      depends_on:
+        - postgres
+      ports:
+        - "80:8000"
+     
+      
+      
+
+      # env_file:
+      #   - .env
+
+      environment:
+        - DATABASE_USER=${DATABASE_USER}
+        - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+        - DATABASE_HOST=${DATABASE_HOST}
+        - DATABASE_PORT=${DATABASE_PORT}
+        - DATABASE_NAME=${DATABASE_NAME}
+        - SECRET_KEY=${SECRET_KEY}
+        - ALGORITHM=${ALGORITHM}
+        - ACCESS_TOKEN_EXPIRE_MINUTES=${ACCESS_TOKEN_EXPIRE_MINUTES}
+  postgres:
+    image: postgres:13
+    environment:
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+      - POSTGRES_DB=${DATABASE_NAME}
+
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+volumes:
+  postgres_data:
+  
+      
