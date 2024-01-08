@@ -1,0 +1,38 @@
+version: "3"
+services:
+  api:
+      build: .
+      depends_on:
+        - postgres
+      ports:
+        - "8000:8000"
+      volumes:
+        - ./:/usr/src/app #for syncing code changes
+      
+      command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload 
+
+      # env_file:
+      #   - .env
+
+      environment:
+        - DATABASE_USER=postgres
+        - DATABASE_PASSWORD=password
+        - DATABASE_HOST=postgres
+        - DATABASE_PORT=5432
+        - DATABASE_NAME=shop_ease
+        - SECRET_KEY=${SECRET_KEY}
+        - ALGORITHM=${ALGORITHM}
+        - ACCESS_TOKEN_EXPIRE_MINUTES=${ACCESS_TOKEN_EXPIRE_MINUTES}
+  postgres:
+    image: postgres:13
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=shop_ease
+
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+volumes:
+  postgres_data:
+  
+      
