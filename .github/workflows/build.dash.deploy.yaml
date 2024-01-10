@@ -16,8 +16,29 @@ jobs:
     steps:
       - name: pulling git repo
         uses: actions/checkout@v2
-      - name: hey it is working
-        run: echo "hey it is working"
+      - name: Installing python version 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+
+      - name: create virtual environment
+        run: cd server && python -m venv venv
+
+      - name: activate virtual environment
+        run: cd server && source venv/bin/activate
+
+      - name: update pip
+        run: cd server && python -m pip install --upgrade pip
+
+      - name: Installing dependencies
+        run: cd server && pip install -r requirements.txt
+        
+      - name: Running tests
+        run: |
+          cd server
+          pip install pytest
+          pytest
+      
 
      
     
