@@ -33,9 +33,9 @@ jobs:
       postgres:
         image: postgres:latest
         env:
-          POSTGRES_USER: "postgres"
-          POSTGRES_PASSWORD: "password"
-          POSTGRES_DB: "jobs"
+          POSTGRES_USER: ${{ secrets.DATABASE_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+          POSTGRES_DB: ${{ secrets.DATABASE_NAME }}
         ports:
           - 5432:5432
         options: >-
@@ -44,7 +44,7 @@ jobs:
           --health-timeout 5s
           --health-retries 5
 
-          
+
     runs-on: ubuntu-latest
     steps:
       - name: pulling git repo
