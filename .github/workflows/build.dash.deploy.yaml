@@ -1,14 +1,19 @@
-name: Build, test and deploy code
+name: Build and deploy code
 
 on:
   push:
     branches:
       - "deploy"
       - "main"
-  pull_request:
-    branches:
-      - "deploy"
-      - "main"
+    pull_request:
+      branches:
+        - "deploy"
+        - "main"
+
+
+
+
+
 
 jobs:
   build:
@@ -39,6 +44,7 @@ jobs:
           --health-timeout 5s
           --health-retries 5
 
+
     runs-on: ubuntu-latest
     steps:
       - name: pulling git repo
@@ -47,40 +53,39 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
+
       - name: create virtual environment
         run: cd server && python -m venv venv
+
       - name: activate virtual environment
         run: cd server && source venv/bin/activate
+
       - name: update pip
         run: cd server && python -m pip install --upgrade pip
+
       - name: Installing dependencies
         run: cd server && pip install -r requirements.txt
 
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
       - name: Running tests
         run: |
           cd server
           pip install pytest
           pytest
+      
 
   deploy:
-    needs: test
     runs-on: ubuntu-latest
+    needs: [build]
     environment:
       name: testing
     permissions: # Required if github_deployment is set to true.
       deployments: write
     steps:
-      - name: pulling git repo
-        uses: actions/checkout@v3
-      - name: Trigger deployment
-        uses: sws2apps/render-deployment@main #consider using pin for dependabot auto update
-        with:
-          serviceId: ${{ secrets.RENDER_SERVICE_ID }}
-          apiKey: ${{ secrets.RENDER_API_KEY }}
-          multipleDeployment: false #optional, default true
+        - name: pulling git repo
+          uses: actions/checkout@v3
+        - name: Trigger deployment
+          uses: sws2apps/render-deployment@main #consider using pin for dependabot auto update
+          with:
+            serviceId: ${{ secrets.RENDER_SERVICE_ID }}
+            apiKey: ${{ secrets.RENDER_API_KEY }}
+            multipleDeployment: false #optional, default true
