@@ -10,7 +10,7 @@ def test_register_user(client):
         "phone":"07124456788"
         
        })
-    print(res.json())
+   
     new_user = UserLoginResponse(**res.json())
     assert res.status_code == 201
     assert new_user.user.name == "modoki"
