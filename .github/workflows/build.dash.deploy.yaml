@@ -1,0 +1,23 @@
+name: Build and deploy code
+
+on:
+  push:
+    branches:
+      - "deploy"
+      - "main"
+    pull_request:
+      branches:
+        - "deploy"
+        - "main"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: pulling git repo
+        uses: actions/checkout@v2
+      - name: hey it is working
+        run: echo "hey it is working"
+
+     
+    
