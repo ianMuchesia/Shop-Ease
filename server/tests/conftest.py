@@ -113,6 +113,7 @@ def test_products(session):
   "description": "An incredible product that will amaze you!",
   "category": "Electro 1",
   "price": 4999,
+  "image":"image",
   "gender": "M",
   "rating": 4
 },{
@@ -122,7 +123,9 @@ def test_products(session):
     "category": "Electro 2",
     "price": 4999,
     "gender": "F",
+    "image":"image",
     "rating": 4
+    
     
 },{
     "id": str(uuid.uuid4()),
@@ -131,6 +134,7 @@ def test_products(session):
     "category": "Electro 3",
     "price": 4999,
     "gender": "M",
+    "image":"image",
     "rating": 4
     
 }

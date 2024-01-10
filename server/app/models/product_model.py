@@ -14,6 +14,7 @@ class Product(BaseModel, Base):
     gender = Column(Enum('M','U' ,'F',name='gender_enum'), nullable=False)
     rating = Column(Integer, nullable=False)
     category = Column(String,ForeignKey('categories.id'), nullable=True)
+    image = Column(String, nullable=False)
     
     category_rel = relationship("Category")
     
