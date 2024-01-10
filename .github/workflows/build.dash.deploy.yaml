@@ -10,8 +10,41 @@ on:
         - "deploy"
         - "main"
 
+
+
+
+
+
 jobs:
   build:
+    environment:
+      name: testing
+    env:
+      DATABASE_USER: ${{ secrets.DATABASE_USER }}
+      DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+      DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
+      DATABASE_PORT: ${{ secrets.DATABASE_PORT }}
+      DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
+      ALGORITHM: ${{ secrets.ALGORITHM }}
+      ACCESS_TOKEN_EXPIRE_MINUTES: ${{ secrets.ACCESS_TOKEN_EXPIRE_MINUTES }}
+
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: "postgres"
+          POSTGRES_PASSWORD: "password"
+          POSTGRES_DB: "jobs"
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+          
     runs-on: ubuntu-latest
     steps:
       - name: pulling git repo
@@ -32,7 +65,7 @@ jobs:
 
       - name: Installing dependencies
         run: cd server && pip install -r requirements.txt
-        
+
       - name: Running tests
         run: |
           cd server
