@@ -10,6 +10,7 @@ import "@/styles/footer.css";
 import "@/styles/product_detail.css";
 import "@/styles/cart.css";
 import "@/styles/login.css";
+import "@/styles/skeletons.css"
 import type { AppProps } from "next/app";
 import { Provider } from "react-redux";
 import store from "@/store/store";
