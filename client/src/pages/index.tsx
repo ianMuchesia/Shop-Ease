@@ -7,9 +7,9 @@ import Sidebar from '@/HomeSections/Sidebar/index'
 import Notification from '@/components/Notifications/Notification'
 import Modal from '@/components/Modals/Modal'
 
-const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  
   return (
     <>
       <Head>
@@ -33,11 +33,11 @@ export default function Home() {
 
 <div className="container">
   <Sidebar/>
-
+  
   <div className="product-box">
     <ProductMinimal/>
-    <ProductFeatured/>
-    <ProductGrid/>
+     <ProductFeatured/>
+   <ProductGrid/>
   </div>
   </div>
   </div>

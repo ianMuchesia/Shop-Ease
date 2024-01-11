@@ -7,7 +7,7 @@ const ProductFeatured = () => {
     <div className="product-featured">
       <h2 className="title">Deal of the day</h2>
 
-      <div className="showcase-wrapper has-scrollbar">
+      <div className="per has-scrollbar">
         <div className="showcase-container">
           <div className="showcase">
             <div className="showcase-banner">

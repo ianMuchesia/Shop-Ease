@@ -1,0 +1,114 @@
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.c-item {
+  width: 200px;
+  background-color: #fff;
+  border: 2px solid #ebebeb;
+  margin: 10px 0px;
+}
+
+.c-item__top .c-skeleton-square {
+  height: 50px;
+  width: 100%;
+
+  /* Ugly hack to fix a strange
+   * Chrome compositing problem.
+   */
+  opacity: 0.99;
+}
+
+.c-item__center {
+  max-width: 130px;
+}
+
+.c-item__center,
+.c-item__bottom {
+  padding-left: 15px;
+}
+
+.c-item__center .c-skeleton-line:first-child {
+  height: 15px;
+  width: 135px;
+  margin-bottom: 0;
+}
+
+.c-item__center .c-skeleton-line:nth-child(2) {
+  height: 10px;
+  width: 130px;
+  margin-bottom: 10px;
+}
+
+.c-item__bottom {
+  max-width: 180px;
+}
+
+.c-item__bottom .c-skeleton-line:first-child {
+  height: 13px;
+  width: 200px;
+  margin-bottom: 2px;
+}
+
+.c-item__bottom .c-skeleton-line:nth-child(2) {
+  height: 13px;
+  width: 140px;
+}
+
+.c-item__add .c-skeleton-square {
+  height: 49px;
+  display: block;
+  margin-top: 7.5px;
+}
+
+.c-skeleton-circle {
+    border-radius: 50%;
+  }
+  
+  .c-skeleton-line {
+    margin-bottom: 10px;
+    border-radius: 0.25rem;
+  }
+  
+  .c-skeleton-line:last-child {
+    margin-bottom: 0;
+  }
+  
+  @keyframes loading-skeleton {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  .c-skeleton-line,
+  .c-skeleton-circle,
+  .c-skeleton-square {
+    background-color: #ebebeb;
+    display: inline-flex;
+    line-height: 1;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .c-skeleton-line:after,
+  .c-skeleton-circle:after,
+  .c-skeleton-square:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(90deg, #ebebeb, #f5f5f5, #ebebeb);
+    transform: translateX(-100%);
+    animation-name: loading-skeleton;
+    animation-direction: normal;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+  

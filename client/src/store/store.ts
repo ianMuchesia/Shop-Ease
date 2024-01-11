@@ -1,11 +1,17 @@
 import { configureStore } from "@reduxjs/toolkit";
 import sidebarsSlice from "./features/sidebarsSlice";
+import { setupListeners } from "@reduxjs/toolkit/query";
+import { api } from "./services/Api";
 
 const store = configureStore({
     reducer: {
-        sidebars: sidebarsSlice
-    }
+        sidebars: sidebarsSlice,
+        [api.reducerPath]: api.reducer,
+    },
+    middleware: (getDefault)=>getDefault().concat(api.middleware)
 })
+
+setupListeners(store.dispatch)
 
 export type RootState = ReturnType<typeof store.getState>;
 

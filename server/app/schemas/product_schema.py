@@ -13,6 +13,7 @@ class ProductBase(BaseModel):
     price: int
     gender: str
     rating: int
+    image: str
    
     
     
