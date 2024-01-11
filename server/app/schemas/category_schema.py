@@ -1,12 +1,8 @@
-from pydantic import BaseModel, ConfigDict, EmailStr
-from typing import List
-from datetime import datetime
+from pydantic import BaseModel, ConfigDict
+from typing import List,ForwardRef
 from .product_schema import ProductResponse
 
-
-
-
-
+ProductResponseForwardRef = ForwardRef("ProductResponse")
 
 
 class CategoryBase(BaseModel):
@@ -26,7 +22,7 @@ class CategoryResponse(CategoryBase):
     model_config = ConfigDict(from_attributes = True)
  
     id: str
-    product_rel: ProductResponse
+    product_rel: ProductResponseForwardRef
     
     
 class NewArrivalsBase(BaseModel):
@@ -39,7 +35,7 @@ class NewArrivalsCreate(NewArrivalsBase):
 class NewArrivalsResponse(NewArrivalsBase):
     model_config = ConfigDict(from_attributes = True)
  
-    products:List[ProductResponse]
+    products: List[ProductResponseForwardRef]
     
     
 class TrendingBase(BaseModel):
@@ -53,7 +49,7 @@ class TrendingResponse(TrendingBase):
  
     id: str
     # product: str
-    product_rel:ProductResponse
+    product_rel:ProductResponseForwardRef
     
     
 class RatedBase(BaseModel):
@@ -66,4 +62,4 @@ class RatedResponse(BaseModel):
     model_config = ConfigDict(from_attributes = True)
  
     id: str
-    product_rel:ProductResponse
+    product_rel:ProductResponseForwardRef
