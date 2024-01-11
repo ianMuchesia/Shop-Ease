@@ -11,7 +11,7 @@ const ProductMinimalCard = ({product}:ProductMinimalCardProps) => {
     <div className="showcase">
     <a href="#" className="showcase-img-box">
       <Image
-        src="/images/products/clothes-1.jpg"
+        src={product.image}
         alt="relaxed short full sleeve t-shirt"
         width="70"
         height="70"
@@ -31,7 +31,7 @@ const ProductMinimalCard = ({product}:ProductMinimalCardProps) => {
       </a>
 
       <div className="price-box">
-        <p className="price">Ksh. {product.price}</p>
+        <p className="price">Ksh. {product.price.toLocaleString()}</p>
         <del>Ksh. {product.price * 115/100}</del>
       </div>
     </div>

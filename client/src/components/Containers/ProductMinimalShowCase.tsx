@@ -31,8 +31,8 @@ interface ProductShowcaseProps {
     products: Product[];
 }
 
-const ProductShowcase = ({ products }:ProductShowcaseProps) => {
+const ProductMinimalShowcase = ({ products }:ProductShowcaseProps) => {
   return <>{renderShowcaseContainers(products)}</>;
 };
 
-export default ProductShowcase;
+export default ProductMinimalShowcase;

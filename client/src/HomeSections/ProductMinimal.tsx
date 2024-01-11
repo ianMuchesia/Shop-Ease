@@ -1,19 +1,18 @@
-import ProductShowcase from "@/components/Containers/ProductShowCase";
+import ProductMinimalShowcase from "@/components/Containers/ProductMinimalShowCase";
 import ProductLoader from "@/components/Containers/ProductSkeletonLoader";
 import { useGetAllProductsQuery } from "@/store/services/Api";
 import React from "react";
 
 const ProductMinimal = () => {
   const { data, error, isLoading } = useGetAllProductsQuery(undefined);
-  console.log(data);
-  console.log(error);
-  console.log(isLoading);
+ 
+
 
   return (
     <>
       <div className="product-minimal">
         {!isLoading && !error && (
-          <ProductShowcase
+          <ProductMinimalShowcase
             products={data.length > 21 ? data.slice(0, 21) : data}
           />
         )}
@@ -24,6 +23,9 @@ const ProductMinimal = () => {
             <ProductLoader />
           </>
         )}
+        {
+          error && <div className="error">Something wrong happened, please try again later.</div>
+        }
       </div>
     </>
   );
