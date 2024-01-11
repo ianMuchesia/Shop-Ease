@@ -1,3 +1,4 @@
+import CountDownBox from "@/components/Cards/CountDownBox";
 import Image from "next/image";
 import React from "react";
 import { IoStar, IoStarHalfOutline } from "react-icons/io5";
@@ -7,7 +8,7 @@ const ProductFeatured = () => {
     <div className="product-featured">
       <h2 className="title">Deal of the day</h2>
 
-      <div className="per has-scrollbar">
+      <div className="showcase-wrapper has-scrollbar">
         <div className="showcase-container">
           <div className="showcase">
             <div className="showcase-banner">
@@ -65,28 +66,7 @@ const ProductFeatured = () => {
               <div className="countdown-box">
                 <p className="countdown-desc">Hurry Up! Offer ends in:</p>
 
-                <div className="countdown">
-                  <div className="countdown-content">
-                    <p className="display-number">360</p>
-
-                    <p className="display-text">Days</p>
-                  </div>
-
-                  <div className="countdown-content">
-                    <p className="display-number">24</p>
-                    <p className="display-text">Hours</p>
-                  </div>
-
-                  <div className="countdown-content">
-                    <p className="display-number">59</p>
-                    <p className="display-text">Min</p>
-                  </div>
-
-                  <div className="countdown-content">
-                    <p className="display-number">00</p>
-                    <p className="display-text">Sec</p>
-                  </div>
-                </div>
+              <CountDownBox/>
               </div>
             </div>
           </div>

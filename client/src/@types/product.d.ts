@@ -11,4 +11,5 @@ export type Product = {
     price: number;
     rating: number;
     updated_at: string;
+    image:string;
   };
