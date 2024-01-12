@@ -5,6 +5,7 @@ bcrypt==4.0.1
 certifi==2023.11.17
 cffi==1.16.0
 click==8.1.7
+cloudinary==1.38.0
 cryptography==41.0.7
 dnspython==2.4.2
 ecdsa==0.18.0
@@ -48,6 +49,7 @@ starlette==0.32.0.post1
 tomli==2.0.1
 typing-extensions==4.9.0
 ujson==5.9.0
+urllib3==2.1.0
 uuid==1.30
 uvicorn==0.25.0
 uvloop==0.19.0
