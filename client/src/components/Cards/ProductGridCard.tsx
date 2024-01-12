@@ -4,6 +4,7 @@ import Image from "next/image";
 import React from "react";
 import {
   IoBagAddOutline,
+  IoCartOutline,
   IoEyeOutline,
   IoHeartOutline,
   IoRepeatOutline,
@@ -50,13 +51,9 @@ const ProductGridCard = ({ product }: ProductGridCardProps) => {
           <button className="btn-action">
             <IoEyeOutline className="ion-icon" />
           </button>
-
+          
           <button className="btn-action">
-            <IoRepeatOutline className="ion-icon" />
-          </button>
-
-          <button className="btn-action">
-            <IoBagAddOutline className="ion-icon" />
+            <IoCartOutline className="ion-icon" />
           </button>
         </div>
       </div>

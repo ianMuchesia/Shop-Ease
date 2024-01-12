@@ -1,4 +1,5 @@
 import { Product } from '@/@types/product'
+import CategorySkeletonLoader from '@/components/Cards/CategorySkeletonLoader'
 import ProductGridCard from '@/components/Cards/ProductGridCard'
 import { useGetAllProductsQuery } from '@/store/services/Api'
 import Image from 'next/image'
@@ -21,6 +22,10 @@ const ProductGrid = () => {
         <ProductGridCard product={product} key={product.id}/>
       ))
         }
+
+        {isLoading && Array(8).fill(0).map((_, i) => (
+          <CategorySkeletonLoader key={i} />
+        ))}
 
     
       
