@@ -5,6 +5,7 @@ on:
     branches:
       - "deploy"
       - "main"
+      - "azure"
     pull_request:
       branches:
         - "deploy"
@@ -71,6 +72,11 @@ jobs:
           cd server
           pip install pytest
           pytest
+      - name: Upload server as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: server
+          path: server
       
 
   deploy:
@@ -80,12 +86,6 @@ jobs:
       name: testing
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: server
-          path: server
-
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
