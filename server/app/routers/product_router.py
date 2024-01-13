@@ -13,8 +13,11 @@ router = APIRouter(
 
 
 @router.get("/",response_model=List[ProductResponse])
-def get_products(db=Depends(get_db)):
-    return read_products(db)
+def get_products(db=Depends(get_db), limit : int = 20, skip : int = 0, gender:str = None):
+    #skip -> offset
+    #pagination
+    print(gender)
+    return read_products(db,limit, skip,gender)
 
 
 

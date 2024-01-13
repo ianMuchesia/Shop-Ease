@@ -1,6 +1,8 @@
 import { Product } from '@/@types/product'
 import Image from 'next/image'
+import Link from 'next/link';
 import React from 'react'
+import { IoCartOutline } from 'react-icons/io5';
 
 
 interface ProductMinimalCardProps {
@@ -9,7 +11,7 @@ interface ProductMinimalCardProps {
 const ProductMinimalCard = ({product}:ProductMinimalCardProps) => {
   return (
     <div className="showcase">
-    <a href="#" className="showcase-img-box">
+    <Link href={`/product/${product.id}`} className="showcase-img-box">
       <Image
         src={product.image}
         alt="relaxed short full sleeve t-shirt"
@@ -17,7 +19,7 @@ const ProductMinimalCard = ({product}:ProductMinimalCardProps) => {
         height="70"
         className="showcase-img"
       />
-    </a>
+    </Link>
 
     <div className="showcase-content">
       <a href="#">
@@ -33,6 +35,9 @@ const ProductMinimalCard = ({product}:ProductMinimalCardProps) => {
       <div className="price-box">
         <p className="price">Ksh. {product.price.toLocaleString()}</p>
         <del>Ksh. {product.price * 115/100}</del>
+        <button className="btn-action" onClick={(e)=> {e.preventDefault()}}>
+            <IoCartOutline className="ion-icon" />
+          </button>
       </div>
     </div>
   </div>
