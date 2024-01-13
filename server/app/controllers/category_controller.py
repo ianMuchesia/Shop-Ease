@@ -69,7 +69,7 @@ def remove_trending(trending_id: str, db: Session):
 
 #new arrivals controllers
 def read_new_arrivals(db: Session):
-    new_arrivals = db.query(Product).order_by(desc(Product.created_at)).limit(12).all()
+    new_arrivals = db.query(Product).order_by(desc(Product.created_at)).limit(10).all()
     return new_arrivals
 
 

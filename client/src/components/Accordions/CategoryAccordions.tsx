@@ -1,5 +1,14 @@
+import UseFocusManager from "@/lib/UseFocusManager";
+import { sidebarCategories } from "@/lib/data";
+import {
+  fetchCategoryProducts,
+  setCategoryName,
+} from "@/store/features/categorySlice";
+import { closeSidebar } from "@/store/features/sidebarsSlice";
+import { useAppDispatch } from "@/store/hooks";
 import Image from "next/image";
 import { useState } from "react";
+import { set } from "react-hook-form";
 import { IoAddOutline, IoRemoveOutline } from "react-icons/io5";
 
 interface CategoryAccordionsProps {
@@ -17,9 +26,34 @@ const CategoryAccordions = ({
   isActive,
   setAccordion,
 }: CategoryAccordionsProps) => {
+  const dispatch = useAppDispatch();
 
+  const { setFocus} = UseFocusManager()
 
-  
+  //if category name matches, return the category object
+  const findCategory = sidebarCategories.find(
+    (category) => category.name === title
+  );
+
+  //for async thunk function, we need to pass an object with endpoint and actionType
+  const handleFetchCategory = async () => {
+    if (!findCategory) {
+      return;
+    }
+    setAccordion(isActive ? null : title);
+
+    dispatch(
+      fetchCategoryProducts({
+        endpoint: findCategory?.endpoint,
+        actionType: findCategory?.actionType,
+      })
+    );
+
+    dispatch(setCategoryName(findCategory?.name));
+
+    dispatch(closeSidebar("category"));
+    setFocus("category-component")
+  };
 
   return (
     <li className="sidebar-menu-category">
@@ -37,20 +71,21 @@ const CategoryAccordions = ({
         </div>
 
         <div>
-          {!isActive ?
+          {!isActive ? (
             <IoAddOutline
               className="ion-icon add-icon"
-              onClick={() => {setAccordion(title)}}
+              onClick={handleFetchCategory}
             />
-
-           :<IoRemoveOutline className="ion-icon remove-icon" 
-            onClick={()=>{ setAccordion(null);}}
-            />}
-          
+          ) : (
+            <IoRemoveOutline
+              className="ion-icon remove-icon"
+              onClick={handleFetchCategory}
+            />
+          )}
         </div>
       </button>
 
-      <ul className={`sidebar-submenu-category-list ${isActive && "active"}`}  data-accordion>
+      {/* <ul className={`sidebar-submenu-category-list ${isActive && "active"}`}  data-accordion>
         {content.map((item, index) => (
           <li className="sidebar-submenu-category" key={index}>
             <a href="#" className="sidebar-submenu-title">
@@ -62,7 +97,7 @@ const CategoryAccordions = ({
           </li>
         ))}
       
-      </ul>
+      </ul> */}
     </li>
   );
 };

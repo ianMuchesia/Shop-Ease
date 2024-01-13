@@ -499,6 +499,10 @@
 
 .product-main { margin-bottom: 30px; }
 
+.product-main:focus {
+  outline: none;
+}
+
 .product-grid {
   display: -ms-grid;
   display: grid;

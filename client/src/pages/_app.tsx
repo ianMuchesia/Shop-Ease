@@ -11,15 +11,21 @@ import "@/styles/product_detail.css";
 import "@/styles/cart.css";
 import "@/styles/login.css";
 import "@/styles/skeletons.css"
+import { Toaster } from 'react-hot-toast'
+
 import type { AppProps } from "next/app";
 import { Provider } from "react-redux";
 import store from "@/store/store";
+import AuthLayout from "@/lib/AuthLayout";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
       <Layout>
+      <Toaster position='top-right'/>
+        <AuthLayout>
         <Component {...pageProps} />
+        </AuthLayout>
       </Layout>
     </Provider>
   );
