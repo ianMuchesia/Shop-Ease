@@ -61,69 +61,14 @@ const MobileSideBarMenu = () => {
 }
         
 
-        <li className="menu-category">
-          <a href="#" className="menu-title">
-            Blog
-          </a>
-        </li>
-
-        <li className="menu-category">
-          <a href="#" className="menu-title">
-            Hot Offers
-          </a>
-        </li>
+    
       </ul>
 
       <div className="menu-bottom">
         <ul className="menu-category-list">
-          <li className="menu-category">
-            <button className="accordion-menu" data-accordion-btn>
-              <p className="menu-title">Language</p>
+         
 
-              <IoCaretBackOutline className="caret-back" />
-            </button>
-
-            <ul className="submenu-category-list" data-accordion>
-              <li className="submenu-category">
-                <a href="#" className="submenu-title">
-                  English
-                </a>
-              </li>
-
-              <li className="submenu-category">
-                <a href="#" className="submenu-title">
-                  Espa&ntilde;ol
-                </a>
-              </li>
-
-              <li className="submenu-category">
-                <a href="#" className="submenu-title">
-                  Fren&ccedil;h
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <li className="menu-category">
-            <button className="accordion-menu" data-accordion-btn>
-              <p className="menu-title">Currency</p>
-              <IoCaretBackOutline className="caret-back" />
-            </button>
-
-            <ul className="submenu-category-list" data-accordion>
-              <li className="submenu-category">
-                <a href="#" className="submenu-title">
-                  USD &dollar;
-                </a>
-              </li>
-
-              <li className="submenu-category">
-                <a href="#" className="submenu-title">
-                  EUR &euro;
-                </a>
-              </li>
-            </ul>
-          </li>
+         
         </ul>
 
         <ul className="menu-social-container">

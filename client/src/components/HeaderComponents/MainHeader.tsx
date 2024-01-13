@@ -1,5 +1,5 @@
 import { openSidebar } from '@/store/features/sidebarsSlice';
-import { useAppDispatch } from '@/store/hooks';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import Image from 'next/image'
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -15,6 +15,8 @@ const MainHeader = () => {
   const router = useRouter()
 
   const dispatch = useAppDispatch()
+
+  const cartTotalItems = useAppSelector(state=>state.cart.totalQuantity)
   return (
     <div className="header-main">
     <div className="container">
@@ -50,7 +52,7 @@ const MainHeader = () => {
         <button className="action-btn" onClick={()=>{dispatch(openSidebar("cart"))}}>
         <IoBagOutline className="ion-icon" />
 
-          <span className="count">0</span>
+          <span className="count">{cartTotalItems}</span>
         </button>
       </div>
     </div>

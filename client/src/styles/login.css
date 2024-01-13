@@ -64,6 +64,17 @@
     flex-direction: column;
     gap: 5px;
   }
+
+  .error_message{
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+
+    color: red;
+    font-size: 0.75rem;
+    margin: 0;
+    padding: 0;
+  }
   
   .icon {
     width: 20px;

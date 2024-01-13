@@ -5,6 +5,7 @@ on:
     branches:
       - "deploy"
       - "main"
+      - "azure"
     pull_request:
       branches:
         - "deploy"

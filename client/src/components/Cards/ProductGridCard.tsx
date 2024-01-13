@@ -1,5 +1,7 @@
 import { Product } from "@/@types/product";
 import Rating from "@/UI/Rating";
+import { addToCart } from "@/store/features/cartSlice";
+import { useAppDispatch } from "@/store/hooks";
 import Image from "next/image";
 import React from "react";
 import {
@@ -15,6 +17,11 @@ interface ProductGridCardProps {
 }
 
 const ProductGridCard = ({ product }: ProductGridCardProps) => {
+
+
+  const dispatch = useAppDispatch()
+
+
   return (
     <div className="showcase">
       <div className="showcase-banner">
@@ -52,7 +59,7 @@ const ProductGridCard = ({ product }: ProductGridCardProps) => {
             <IoEyeOutline className="ion-icon" />
           </button>
           
-          <button className="btn-action">
+          <button className="btn-action" onClick={()=>{dispatch(addToCart(product))}}>
             <IoCartOutline className="ion-icon" />
           </button>
         </div>

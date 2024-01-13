@@ -1,6 +1,6 @@
 import { SidebarName } from '@/@types'
 import { openSidebar } from '@/store/features/sidebarsSlice'
-import { useAppDispatch } from '@/store/hooks'
+import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import React from 'react'
 import {  IoBagOutline, IoGridOutline, IoHeartOutline, IoHomeOutline, IoMenuOutline } from 'react-icons/io5'
 
@@ -13,6 +13,8 @@ const MobileBottom = () => {
     dispatch(openSidebar(name))
 
   }
+  const cartTotalItems = useAppSelector(state=>state.cart.totalQuantity)
+
 
   return (
     <div className="mobile-bottom-navigation">
@@ -23,7 +25,7 @@ const MobileBottom = () => {
         <button className="action-btn" onClick={()=>HandleOpenSidebar("cart")}>
           <IoBagOutline className="ion-icon md-hydrated"/>
 
-          <span className="count">0</span>
+          <span className="count">{cartTotalItems}</span>
         </button>
 
         <button className="action-btn">

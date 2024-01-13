@@ -656,6 +656,10 @@
     display: block;
   }
 
+  .desktop-close{
+    display: none;
+  }
+
   .desktop-menu-category-list {
     position: relative;
     display: -webkit-box;

@@ -4,6 +4,10 @@ import { MdOutlineEmail } from "react-icons/md";
 import Image from "next/image";
 import Link from "next/link";
 import { useForm, SubmitHandler } from "react-hook-form";
+import axios from "axios";
+import { baseURL } from "@/lib/baseUrl";
+import toast from "react-hot-toast";
+import { useRouter } from "next/router";
 
 interface LoginFormValues {
   email: string;
@@ -11,15 +15,42 @@ interface LoginFormValues {
 }
 
 const login = () => {
+
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<LoginFormValues>();
 
-  const onSubmit: SubmitHandler<LoginFormValues> = (data) => {
-    // Handle your login logic here using the form data (data.email, data.password)
-    console.log("Form Data:", data);
+  const router = useRouter()
+
+
+  const onSubmit: SubmitHandler<LoginFormValues> = async(data) => {
+   
+    try {
+      
+      const { email, password } = data;
+
+      const res = await axios.post(`${baseURL}/auth/login`, {email, password})
+
+      console.log(res.data.access_token)
+      localStorage.setItem('token', res.data.access_token);
+
+      toast.success("Login Successful")
+      reset()
+      router.push("/")
+    } catch (error:any) {
+      if (error?.response?.data?.detail) {
+        toast.error(error.response.data.detail)
+      }else{  
+        toast.error("Something went wrong")
+      }
+      console.log(error)
+
+      
+    }
   };
 
   return (
@@ -43,7 +74,7 @@ const login = () => {
           <input
             {...register("email", { required: "Email is required" })}
             placeholder="name@mail.com"
-            type="text"
+            type="email"
             className={`input_field ${errors.email ? "input_error" : ""}`}
             id="email_field"
           />

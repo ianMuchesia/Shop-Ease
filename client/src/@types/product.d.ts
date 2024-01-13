@@ -13,3 +13,19 @@ export type Product = {
     updated_at: string;
     image:string;
   };
+
+
+  export type CategoryType = {
+    endpoint: string;
+    actionType: string;
+  };
+
+
+  export type CartItem = {
+    id: string;
+    name: string;
+    price: number;
+    quantity: number;
+    totalPrice: number;
+    image:string;
+  };
