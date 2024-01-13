@@ -5,7 +5,6 @@ on:
     branches:
       - "deploy"
       - "main"
-      - "azure"
     pull_request:
       branches:
         - "deploy"
@@ -72,11 +71,6 @@ jobs:
           cd server
           pip install pytest
           pytest
-      # - name: Upload server as artifact
-      #   uses: actions/upload-artifact@v2
-      #   with:
-      #     name: server
-      #     path: server
       
 
   deploy:
@@ -84,19 +78,14 @@ jobs:
     needs: [build]
     environment:
       name: testing
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-    
+    permissions: # Required if github_deployment is set to true.
+      deployments: write
     steps:
-      - name: Azure login
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-      - name: Deploy to Azure Web App
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: ${{ secrets.APP_NAME }}
-          slot-name: testing
-          publish-profile: ${{ secrets.PUBLISH_PROFILE }}
-         
-       
-     
+        - name: pulling git repo
+          uses: actions/checkout@v3
+        - name: Trigger deployment
+          uses: sws2apps/render-deployment@main #consider using pin for dependabot auto update
+          with:
+            serviceId: ${{ secrets.RENDER_SERVICE_ID }}
+            apiKey: ${{ secrets.RENDER_API_KEY }}
+            multipleDeployment: false #optional, default true

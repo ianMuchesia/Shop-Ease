@@ -5,8 +5,12 @@ from ..errors.errors import NotFoundError
 
 
 
-def read_products(db: Session):
-    return db.query(Product).all()
+def read_products(db: Session,limit,skip, gender):
+    query = db.query(Product)
+    if gender is not None:
+        query = query.filter(Product.gender == gender)
+    query = query.offset(skip).limit(limit)
+    return query.all()
 
 def create_product(product: Product, db: Session):
     db_product = Product(**product.model_dump())
