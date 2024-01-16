@@ -13,7 +13,7 @@ const ProductMinimalCard = ({ product }: ProductMinimalCardProps) => {
   const dispatch = useAppDispatch();
   return (
     <div className="showcase">
-      <Link href={`/product/${product.id}`} className="showcase-img-box">
+      <Link href={`/products/${product.id}`} className="showcase-img-box">
         <Image
           src={product.image}
           alt="relaxed short full sleeve t-shirt"

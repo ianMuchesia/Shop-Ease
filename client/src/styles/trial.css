@@ -1,0 +1,381 @@
+.checkout-container h2 {
+  margin-bottom: 0px;
+  margin-top: 25px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 24px;
+  color: var(--salmon-pink)
+  
+
+}
+
+.checkout-container {
+  height: 100%;
+  margin: 50px 0px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.dropdown-select.visible {
+  display: block;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.checkout ul {
+  margin: 0;
+  padding: 0;
+}
+
+.checkout ul li {
+  list-style: none;
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+.checkout ul li:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-select {
+  position: absolute;
+  background: #77aaee;
+  text-align: left;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  width: 90%;
+  left: 2px;
+  line-height: 2em;
+  margin-top: 2px;
+  box-sizing: border-box;
+}
+
+.thin {
+  font-weight: 400;
+}
+
+.small {
+  font-size: 12px;
+  font-size: .8rem;
+}
+
+.half-input-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.half-input-table td:first-of-type {
+  border-right: 10px solid #4488dd;
+  width: 50%;
+}
+
+.window {
+  height: 540px;
+  min-width: 800px;
+  background: #fff;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  box-shadow: 0px 15px 50px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 30px;
+  z-index: 10;
+}
+
+.order-info {
+  height: 100%;
+  width: 50%;
+  padding-left: 10px;
+  padding-right: 0px;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: relative;
+}
+
+.order-tables {
+  overflow-y: auto;
+  height: 70%;
+}
+
+.checkout .price {
+  bottom: 0px;
+  position: absolute;
+  right: 0px;
+  color: #4488dd;
+}
+
+.order-table td:first-of-type {
+  width: 25%;
+}
+
+.order-table {
+  position: relative;
+}
+
+.line {
+  height: 1px;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background: #ddd;
+}
+
+.order-table td:last-of-type {
+  vertical-align: top;
+  padding-left: 25px;
+}
+
+.order-info-content {
+  table-layout: fixed;
+
+}
+
+.full-width {
+  width: 100%;
+}
+
+.pay-btn {
+  border: none;
+  background: #22b877;
+  line-height: 2em;
+  border-radius: 10px;
+  font-size: 19px;
+  font-size: 1.2rem;
+  color: #fff;
+  cursor: pointer;
+  position: absolute;
+  bottom: 25px;
+  width: calc(100% - 50px);
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+}
+
+.pay-btn:hover {
+  background: #22a877;
+  color: #eee;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+}
+
+.total-container {
+  position: absolute;
+  width: 80%;
+  bottom: 10px;
+  z-index: 100;
+  background-color: #fff;
+}
+
+.checkout .total {
+  margin-top: 25px;
+  font-size: 20px;
+  font-size: 1.3rem;
+  position: absolute;
+  bottom: 30px;
+  right: 27px;
+  left: 35px;
+}
+
+.dense {
+  line-height: 1.2em;
+  font-size: 16px;
+  font-size: 1rem;
+}
+
+.input-field {
+  background: rgba(255, 255, 255, 0.1);
+  margin-bottom: 10px;
+  margin-top: 3px;
+  line-height: 1.5em;
+  font-size: 20px;
+  font-size: 1.3rem;
+  border: none;
+  padding: 5px 10px 5px 10px;
+  color: #fff;
+  box-sizing: border-box;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.credit-info {
+  /* background: #4488dd; */
+  height: 100%;
+  width: 50%;
+  /* color: #eee; */
+
+  -ms-flex-pack: center;
+  justify-content: center;
+  font-size: 14px;
+  font-size: .9rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  align-items: center;
+  display: flex;
+
+  padding-left: 10px;
+  padding-right: 25px;
+  padding-bottom: 25px;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  position: relative;
+}
+
+@media (max-width: 900px) {
+  .window {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+    border-radius: 0px;
+    min-width: none;
+  }
+
+  .order-info {
+    width: 70%;
+    height: 50%;
+    padding-bottom: 10px;
+    border-radius: 0px;
+    position: relative;
+  }
+  .order-tables {
+    overflow-y: auto;
+    height: 50%;
+  }
+  .total-container {
+    position: relative;
+    width: 100%;
+    bottom: 0px;
+    z-index: 100;
+    background-color: #fff;
+  }
+
+  .credit-info {
+    width: 80%;
+    height: 100%;
+    padding-bottom: 100px;
+    border-radius: 0px;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* other styles */
+
+.rightside {
+  /* background-color: #ffffff; */
+  width: 35rem;
+  border-bottom-right-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+
+}
+
+.checkout-container p {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin: .5rem 0;
+}
+
+.inputbox {
+  color: #030303;
+  width: 80%;
+  padding: 0.6rem;
+  border: none;
+  border-bottom: 1.5px solid #ccc;
+  margin-bottom: 0.5rem;
+  border-radius: 0.3rem;
+
+  color: #615a5a;
+  font-size: 0.8rem;
+  font-weight: 500;
+  outline: none;
+}
+
+.expcvv {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 0.6rem;
+}
+
+.expcvv_text {
+  padding-right: 1rem;
+}
+
+.expcvv_text2 {
+  padding: 0 1rem;
+}
+
+.button {
+  background: linear-gradient(135deg, #753370 0%, #298096 100%);
+  padding: 15px;
+  border: none;
+  border-radius: 50px;
+  color: white;
+  font-weight: 400;
+  font-size: 1rem;
+  margin-top: 10px;
+  width: 100%;
+  letter-spacing: .11rem;
+  outline: none;
+}
+
+.button:hover {
+  transform: scale(1.05) translateY(-3px);
+  box-shadow: 3px 3px 6px #38373785;
+}
+
+@media only screen and (max-width: 1000px) {
+
+  .rightside {
+    width: 100%;
+    border-bottom-left-radius: 1.5rem;
+    padding: 0.5rem 3rem 3rem 2rem;
+    border-radius: 0;
+  }
+}
+
+
+/* other styles */
+.checkout-container .error-message{
+  font-size: 0.7rem;
+  color:red;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+  
+}

@@ -1,15 +1,18 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
-import { Banner, Category, ProductFeatured, ProductGrid, ProductMinimal, Testimonials } from '@/HomeSections'
-import Sidebar from '@/HomeSections/Sidebar/index'
-import Notification from '@/components/Notifications/Notification'
-import Modal from '@/components/Modals/Modal'
+import Head from "next/head";
 
+import {
+  Banner,
+  Category,
+  ProductFeatured,
+  ProductGrid,
+  ProductMinimal,
+  Testimonials,
+} from "@/HomeSections";
+import Sidebar from "@/HomeSections/Sidebar/index";
+import Notification from "@/components/Notifications/Notification";
+import Modal from "@/components/Modals/Modal";
 
 export default function Home() {
-  
   return (
     <>
       <Head>
@@ -18,33 +21,29 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Notification/>
+      <Notification />
       {/* <Modal /> */}
-    <Banner/>
-    <Category/>
+      <Banner />
+      <Category />
 
-    {/* 
+      {/* 
     
 -- PRODUCT CONTAINER
 
     */}
 
-<div className="product-container">
+      <div className="product-container">
+        <div className="container">
+          <Sidebar />
 
-<div className="container">
-  <Sidebar/>
-  
-  <div className="product-box">
-    <ProductMinimal/>
-     <ProductFeatured/>
-   <ProductGrid/>
-  </div>
-  </div>
-  </div>
-  <Testimonials/> 
-      
+          <div className="product-box">
+            <ProductMinimal />
+            <ProductFeatured />
+            <ProductGrid />
+          </div>
+        </div>
+      </div>
+      {/* <Testimonials/>  */}
     </>
-  )
+  );
 }
-
-

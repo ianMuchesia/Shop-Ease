@@ -3,6 +3,7 @@ import Rating from "@/UI/Rating";
 import { addToCart } from "@/store/features/cartSlice";
 import { useAppDispatch } from "@/store/hooks";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import React from "react";
 import {
   IoBagAddOutline,
@@ -20,6 +21,8 @@ const ProductGridCard = ({ product }: ProductGridCardProps) => {
 
 
   const dispatch = useAppDispatch()
+
+  const router = useRouter()
 
 
   return (
@@ -55,7 +58,7 @@ const ProductGridCard = ({ product }: ProductGridCardProps) => {
             <IoHeartOutline className="ion-icon" />
           </button>
 
-          <button className="btn-action">
+          <button className="btn-action" onClick={()=>{router.push(`/products/${product.id}`)}}>
             <IoEyeOutline className="ion-icon" />
           </button>
           
