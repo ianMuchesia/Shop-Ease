@@ -7,7 +7,7 @@ const ProductLoader = () => {
     <div className="showcase-wrapper has-scrollbar">
       <div className="showcase-container">
         {
-          Array(4).fill(0).map((_, index) => (
+          Array(2).fill(0).map((_, index) => (
             <SkeletonCard key={index} />
           ))
         }

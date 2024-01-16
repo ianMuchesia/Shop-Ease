@@ -11,6 +11,9 @@ import "@/styles/product_detail.css";
 import "@/styles/cart.css";
 import "@/styles/login.css";
 import "@/styles/skeletons.css"
+import "@/styles/fetcherror.css"
+import "@/styles/checkout.css"
+import "@/styles/success.css"
 import { Toaster } from 'react-hot-toast'
 
 import type { AppProps } from "next/app";

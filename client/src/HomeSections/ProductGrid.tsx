@@ -8,15 +8,12 @@ import {
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import React, { useEffect, useRef } from "react";
 
-
 const ProductGrid = () => {
+  const { focusedCategoryComponent, clearFocus } = UseFocusManager();
 
-  const { focusedCategoryComponent, clearFocus } = UseFocusManager()
-
-  const productMainRef = useRef<HTMLDivElement>(null)
+  const productMainRef = useRef<HTMLDivElement>(null);
 
   const dispatch = useAppDispatch();
-
 
   const { products, error, loading, name } = useAppSelector(
     (state) => state.category
@@ -41,18 +38,12 @@ const ProductGrid = () => {
     };
   }, []);
 
-
-
   useEffect(() => {
     if (focusedCategoryComponent === "category-component") {
-      productMainRef.current?.focus()
-      clearFocus()
+      productMainRef.current?.focus();
+      clearFocus();
     }
-  }, [focusedCategoryComponent])
-
-
-
-
+  }, [focusedCategoryComponent]);
 
   return (
     <div className="product-main" ref={productMainRef} tabIndex={-1}>
@@ -64,7 +55,7 @@ const ProductGrid = () => {
       )}
 
       <div className="product-grid">
-        {products &&
+        {products.length > 0 &&
           !error &&
           products.map((product) => (
             <ProductGridCard product={product} key={product.id} />

@@ -10,7 +10,7 @@ interface MaylikeProductCardProps {
 const MaylikeProductCard = ({product}:MaylikeProductCardProps) => {
   return (
     
-    <Link href={`/product/${product.id}`}>
+    <Link href={`/products/${product.id}`}>
       <div className="maylike-product-card">
         <img 
           src={product.image}

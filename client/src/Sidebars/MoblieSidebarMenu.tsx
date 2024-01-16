@@ -12,6 +12,7 @@ import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { closeSidebar } from "@/store/features/sidebarsSlice";
 import {menuAccordions} from "@/lib/data"
 import MenuAccordions from "@/components/Accordions/MenuAccordions";
+import Link from "next/link";
 
 
 
@@ -34,7 +35,10 @@ const MobileSideBarMenu = () => {
   return (
     <nav className={`mobile-navigation-menu has-scrollbar ${isOpenSidebar && 'active'}`} data-mobile-menu>
       <div className="menu-top">
+      
         <h2 className="menu-title">Menu</h2>
+
+       
 
         <button className="menu-close-btn" data-mobile-menu-close-btn onClick={handleCloseSidebar}>
           <IoCloseOutline />
@@ -43,9 +47,9 @@ const MobileSideBarMenu = () => {
 
       <ul className="mobile-menu-category-list">
         <li className="menu-category">
-          <a href="#" className="menu-title">
+          <Link href="/" className="menu-title" onClick={handleCloseSidebar}>
             Home
-          </a>
+          </Link>
         </li>
 
 {

@@ -1,14 +1,16 @@
 
 
-import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-icons/ai';
+import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
-import { useEffect, useState } from 'react';
 import { GetStaticPropsContext } from 'next';
 import Sidebar from '@/HomeSections/Sidebar/index';
 import axios from 'axios';
 import { baseURL } from '@/lib/baseUrl';
 import { Product } from '@/@types/product';
 import MaylikeProductCard from '@/components/Cards/MaylikeProductCard';
+import FetchError from '@/Errors/FetchError';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { addToCart } from '@/store/features/cartSlice';
 
 
 type staticPathsProps = {
@@ -19,21 +21,22 @@ type staticPathsProps = {
 interface ProductDetailsProps {
   product: Product;
   products: Product[];
+  error?: any;
 }
 
 
-const ProductDetails = ({product, products}:ProductDetailsProps) => {
+const ProductDetails = ({product, products,error}:ProductDetailsProps) => {
 
-    const [index, setIndex] = useState(0);
-    const [images, setImages] = useState<string[]>([]);
 
-    useEffect(() => {
-      if (product) {
-        setImages([product.image,product.image,product.image,product.image]);
-      }
+  const dispatch  = useAppDispatch() 
 
-    }, [product]);
+  const cart = useAppSelector(state=>state.cart)
 
+    
+
+    if (!product || !products) {
+      return <FetchError/>
+    }
 
     return (
       <div>
@@ -43,7 +46,7 @@ const ProductDetails = ({product, products}:ProductDetailsProps) => {
         <div className="product-detail-container">
           <div>
             <div className="image-container">
-              <img src={product.image && images[index]} className="product-detail-image" />
+              <img src={product.image} className="product-detail-image" />
             </div>
             {/* <div className="small-images-container">
               {images?.map((item, i) => (
@@ -74,16 +77,16 @@ const ProductDetails = ({product, products}:ProductDetailsProps) => {
             <h4>Details: </h4>
             <p>{product.description}</p>
             <p className="price">Ksh. {product.price.toLocaleString()}</p>
-            <div className="quantity">
+            {/* <div className="quantity">
               <h3>Quantity:</h3>
               <p className="quantity-desc">
                 <span className="minus"><AiOutlineMinus /></span>
                 <span className="num">{0}</span>
                 <span className="plus"  ><AiOutlinePlus /></span>
               </p>
-            </div>
+            </div> */}
             <div className="buttons">
-              <button type="button" className="add-to-cart"  >Add to Cart</button>
+              <button type="button" className="add-to-cart"  onClick={()=>dispatch(addToCart(product))}>Add to Cart</button>
               <button type="button" className="buy-now" >Buy Now</button>
             </div>
           </div>
@@ -109,7 +112,10 @@ const ProductDetails = ({product, products}:ProductDetailsProps) => {
 
   export const getStaticPaths = async () => {
     try {
-      const { data } = await axios.get<staticPathsProps>(`${process.env.baseURL}/products`);
+      const axiosConfig = {
+        timeout: 10000,
+      };
+      const { data } = await axios.get<staticPathsProps>(`https://shop-ease-ian-msodoki.koyeb.app/products/?limit=30`,axiosConfig);
   
       const { products } = data;
       const paths = products.map(product => ({
@@ -118,13 +124,14 @@ const ProductDetails = ({product, products}:ProductDetailsProps) => {
         }
       }));
   
+
       return {
         paths,
         fallback: 'blocking'
       };
     } catch (error) {
       console.error('Error occurred while fetching product data:', error);
-      // Return an empty paths array if there's an error
+    
       return {
         paths: [],
         fallback: 'blocking'
@@ -135,27 +142,31 @@ const ProductDetails = ({product, products}:ProductDetailsProps) => {
 
 
   
-export const getStaticProps = async (context: GetStaticPropsContext) => {
-  try {
-    const { params } = context;
-    const { id } = params as { id: string };
-
-    const { data: product } = await axios.get<Product>(`${baseURL}/products/${id}`);
-    const { data: products } = await axios.get<Product[]>(`${baseURL}/products`);
-
-    console.log(product);
-
-    return {
-      props: { product, products }
-    };
-  } catch (error) {
-    console.error('Error occurred while fetching product data:', error);
-
-    // Return empty props if there's an error
-    return {
-      props: {}
-    };
+  export const getStaticProps = async (context: GetStaticPropsContext) => {
+    try {
+      const { params } = context;
+      const { id } = params as { id: string };
+      const { data: product } = await axios.get<Product>(`${baseURL}/products/${id}`);
+      const { data: products } = await axios.get<Product[]>(`${baseURL}/products/?limit=30`);
+  
+      return {
+        props: { product, products }
+      };
+    } catch (error) {
+      console.error('Error occurred while fetching product data:', error);
+    
+      // Type check error before accessing message property
+      let errorMessage = '';
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      }
+    
+      return {
+        props: {
+          error: errorMessage
+        }
+      };
+    }
   }
-};
 
   export default ProductDetails
