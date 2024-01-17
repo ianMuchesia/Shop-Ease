@@ -5,7 +5,7 @@ const MensPanel = () => {
   return (
     <ul className="dropdown-panel-list">
                   <li className="menu-title">
-                    <a href="#">Men's</a>
+                    <a href="#">Men&apos;s</a>
                   </li>
 
                   <li className="panel-list-item">

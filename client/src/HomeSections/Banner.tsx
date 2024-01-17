@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 const Banner = () => {
@@ -19,10 +20,10 @@ const Banner = () => {
 
             <p className="banner-subtitle">Trending item</p>
 
-            <h2 className="banner-title">Women's latest fashion sale</h2>
+            <h2 className="banner-title">Women&apos;s latest fashion sale</h2>
 
             <p className="banner-text">
-              starting at &dollar; <b>20</b>.00
+              starting at Ksh. <b>200</b>.00
             </p>
 
             <a href="#" className="banner-btn">Shop now</a>
@@ -44,10 +45,10 @@ const Banner = () => {
             <h2 className="banner-title">Modern sunglasses</h2>
 
             <p className="banner-text">
-              starting at &dollar; <b>15</b>.00
+              starting at Ksh. <b>1500</b>.00
             </p>
 
-            <a href="#" className="banner-btn">Shop now</a>
+            <Link href="/" className="banner-btn">Shop now</Link>
 
           </div>
 
@@ -69,7 +70,7 @@ const Banner = () => {
               starting at &dollar; <b>29</b>.99
             </p>
 
-            <a href="#" className="banner-btn">Shop now</a>
+            <Link href="/" className="banner-btn">Shop now</Link>
 
           </div>
 

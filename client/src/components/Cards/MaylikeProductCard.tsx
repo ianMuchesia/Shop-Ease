@@ -1,4 +1,5 @@
 import { Product } from '@/@types/product';
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
 
@@ -12,10 +13,11 @@ const MaylikeProductCard = ({product}:MaylikeProductCardProps) => {
     
     <Link href={`/products/${product.id}`}>
       <div className="maylike-product-card">
-        <img 
+        <Image
           src={product.image}
           width={250}
           height={250}
+          alt={product.name}
           className="maylike-product-image"
         />
         <p className="maylike-product-name">{product.name}</p>

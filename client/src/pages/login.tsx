@@ -14,7 +14,7 @@ interface LoginFormValues {
   password: string;
 }
 
-const login = () => {
+const Login = () => {
 
 
   const {
@@ -124,4 +124,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;
