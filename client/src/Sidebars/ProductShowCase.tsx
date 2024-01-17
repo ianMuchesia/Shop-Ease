@@ -8,7 +8,7 @@ const ProductShowCase = () => {
 
     <h3 className="showcase-heading">best sellers</h3>
 
-    <div className="showcase-wrapper">
+    {/* <div className="showcase-wrapper">
 
       <div className="showcase-container">
 
@@ -133,7 +133,7 @@ const ProductShowCase = () => {
 
       </div>
 
-    </div>
+    </div> */}
 
   </div>
   )

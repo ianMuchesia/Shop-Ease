@@ -11,6 +11,7 @@ import MaylikeProductCard from '@/components/Cards/MaylikeProductCard';
 import FetchError from '@/Errors/FetchError';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { addToCart } from '@/store/features/cartSlice';
+import Image from 'next/image';
 
 
 type staticPathsProps = {
@@ -46,7 +47,11 @@ const ProductDetails = ({product, products,error}:ProductDetailsProps) => {
         <div className="product-detail-container">
           <div>
             <div className="image-container">
-              <img src={product.image} className="product-detail-image" />
+              <Image src={product.image} 
+              alt={product.name}
+              height={400}
+              width={400}
+              className="product-detail-image" />
             </div>
             {/* <div className="small-images-container">
               {images?.map((item, i) => (

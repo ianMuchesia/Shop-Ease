@@ -11,10 +11,12 @@ const AuthLayout = ({children}:AuthLayoutProps) => {
 
     const dispatch = useAppDispatch()
 
+    const user = useAppSelector(state=>state.auth.isAuthenticated)
+
    useEffect(()=>{
      dispatch(AuthCheck())
     }
-    ,[])  
+    ,[user])  
        
 
 

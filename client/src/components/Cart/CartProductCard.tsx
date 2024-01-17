@@ -5,6 +5,7 @@ import {
   removeSingleItemFromCart,
 } from "@/store/features/cartSlice";
 import { useAppDispatch } from "@/store/hooks";
+import Image from "next/image";
 import React from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { TiDeleteOutline } from "react-icons/ti";
@@ -17,7 +18,12 @@ const CartProductCard = ({ item }: CartProductCardProps) => {
   const dispatch = useAppDispatch();
   return (
     <div className="cart-product">
-      <img src={item?.image} className="cart-product-image" />
+      <Image 
+      src={item?.image}
+      alt={item?.name}
+      height={150}
+      width={180} 
+      className="cart-product-image" />
       <div className="item-desc">
         <div className="flex top">
           <h5>{item.name.slice(0, 22)}</h5>
