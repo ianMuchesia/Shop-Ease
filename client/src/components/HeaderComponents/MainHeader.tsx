@@ -1,31 +1,28 @@
-import { openSidebar } from '@/store/features/sidebarsSlice';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import Image from 'next/image'
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import React from 'react'
+import { openSidebar } from "@/store/features/sidebarsSlice";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 
+import Link from "next/link";
+import { useRouter } from "next/router";
+import React from "react";
+import toast from "react-hot-toast";
 
-
-import { IoBagOutline,  IoHeartOutline, IoPerson, IoPersonOutline, IoSearch, IoSearchOutline } from "react-icons/io5";
-
+import { IoBagOutline, IoHeartOutline, IoPersonOutline } from "react-icons/io5";
 
 const MainHeader = () => {
+  const router = useRouter();
 
-  const router = useRouter()
+  const dispatch = useAppDispatch();
 
-  const dispatch = useAppDispatch()
-
-  const cartTotalItems = useAppSelector(state=>state.cart.totalQuantity)
+  const cartTotalItems = useAppSelector((state) => state.cart.totalQuantity);
   return (
     <div className="header-main">
-    <div className="container">
-      <Link href="/" className="header-logo">
-      <h1>ShopEase</h1>
-      </Link>
+      <div className="container">
+        <Link href="/" className="header-logo">
+          <h1>ShopEase</h1>
+        </Link>
 
-      <div className="header-search-container">
-        {/* <input
+        <div className="header-search-container">
+          {/* <input
           type="search"
           name="search"
           className="search-field"
@@ -35,29 +32,37 @@ const MainHeader = () => {
         <button className="search-btn">
             <IoSearchOutline />
         </button> */}
+        </div>
 
-        
-      </div>
+        <div className="header-user-actions">
+          <button className="action-btn" onClick={() => router.push("/login")}>
+            <IoPersonOutline className="ion-icon" />
+          </button>
 
-      <div className="header-user-actions">
-        <button className="action-btn" onClick={()=>router.push("/login")}>
-         <IoPersonOutline  className="ion-icon" />
-        </button>
+          <button
+            className="action-btn"
+            onClick={() => {
+              toast.error("Feature not available");
+            }}
+          >
+            <IoHeartOutline className="ion-icon" />
+            <span className="count">0</span>
+          </button>
 
-        <button className="action-btn">
-        <IoHeartOutline className="ion-icon" />
-          <span className="count">0</span>
-        </button>
+          <button
+            className="action-btn"
+            onClick={() => {
+              dispatch(openSidebar("cart"));
+            }}
+          >
+            <IoBagOutline className="ion-icon" />
 
-        <button className="action-btn" onClick={()=>{dispatch(openSidebar("cart"))}}>
-        <IoBagOutline className="ion-icon" />
-
-          <span className="count">{cartTotalItems}</span>
-        </button>
+            <span className="count">{cartTotalItems}</span>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-  )
-}
+  );
+};
 
-export default MainHeader
+export default MainHeader;

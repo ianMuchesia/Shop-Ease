@@ -7,7 +7,7 @@
     width: 1000px;
   margin: auto;
   margin-top: 160px;
-    background-color: #dcdcdc;
+    /* background-color: #dcdcdc; */
     padding: 50px;
     border-radius: 15px;
     display: flex;
@@ -16,7 +16,7 @@
     flex-direction: column;
   }
   
-  .success .icon {
+  .success .success-icon {
      color: green;
      font-size: 40px;
   }
@@ -25,7 +25,7 @@
     margin-top: 15px 0px;
     font-weight: 900;
     font-size: 40px;
-    color:#324d67;
+    /* color:#324d67; */
   }
   .success .email-msg{
      font-size: 16px;

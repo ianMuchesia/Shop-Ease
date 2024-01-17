@@ -1,3 +1,4 @@
+import UseFetchCategory from '@/lib/UseFetchCategory';
 import UseFocusManager from '@/lib/UseFocusManager';
 import { sidebarCategories } from '@/lib/data';
 import { fetchCategoryProducts, setCategoryName } from '@/store/features/categorySlice';
@@ -19,6 +20,7 @@ const MenuAccordions = ({title, content,isActive,setAccordion}:AccordionProps) =
 
   const dispatch = useAppDispatch()
 
+  const {dispatchFetchCategory, dispatchCloseSidebar} = UseFetchCategory()
   const {setFocus} = UseFocusManager()
 
   //if category name matches, return the category object
@@ -30,15 +32,11 @@ const MenuAccordions = ({title, content,isActive,setAccordion}:AccordionProps) =
       toast.error("Category not found")
       return
     }
-    setAccordion(isActive?null:title)
+    // setAccordion(isActive?null:title)
 
+    dispatchFetchCategory(findCategory)
+    dispatchCloseSidebar("menu")
 
-    //for async thunk function, we need to pass an object with endpoint and actionType
-    dispatch(fetchCategoryProducts({endpoint:findCategory?.endpoint , actionType:findCategory?.actionType}))
-
-    dispatch(setCategoryName(findCategory?.name))
-
-    dispatch(closeSidebar("menu"))
 
     setFocus("category-component")
 
@@ -46,10 +44,10 @@ const MenuAccordions = ({title, content,isActive,setAccordion}:AccordionProps) =
   }
 
   return (
-    <li className="menu-category">
-    <button className="accordion-menu" data-accordion-btn onClick={handleFetchCategory}>
+    <li className="menu-category" onClick={handleFetchCategory}>
+    <button className="accordion-menu" data-accordion-btn >
       <p className="menu-title">{title}</p>
-      <div>{isActive ? <IoRemoveCircleOutline /> : <IoAddCircleOutline />}</div>
+      {/* <div>{isActive ? <IoRemoveCircleOutline /> : <IoAddCircleOutline />}</div> */}
 
     </button>
 

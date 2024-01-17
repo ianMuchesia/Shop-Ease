@@ -1,15 +1,16 @@
+import UseFetchCategory from '@/lib/UseFetchCategory';
 import UseFocusManager from '@/lib/UseFocusManager';
 import { sidebarCategories } from '@/lib/data';
-import { fetchCategoryProducts, setCategoryName } from '@/store/features/categorySlice';
-import { useAppDispatch } from '@/store/hooks';
+
 import React from 'react'
+import toast from 'react-hot-toast';
 
 interface DesktopNavbarItemProps {
     name: string
 }
 const DesktopNavbarItem = (props:DesktopNavbarItemProps) => {
 
-    const dispatch = useAppDispatch();
+   const {dispatchCloseSidebar,dispatchFetchCategory} = UseFetchCategory()
 
     const {setFocus} = UseFocusManager()
     const findCategory = sidebarCategories.find(
@@ -21,24 +22,19 @@ const DesktopNavbarItem = (props:DesktopNavbarItemProps) => {
 
     const handleFetchCategory = async () => {   
         if (!findCategory) {
+          toast.error("Category not found")
           return;
         }
-        console.log(findCategory)
-        dispatch(
-          fetchCategoryProducts({
-            endpoint: findCategory?.endpoint,
-            actionType: findCategory?.actionType,
-          })
-        );
-    
-        dispatch(setCategoryName(findCategory?.name));
+        dispatchFetchCategory(findCategory)
+        dispatchCloseSidebar("category")
+  
         setFocus("category-component")
 
     
       }
 
   return (
-    <li className="menu-category" onClick={handleFetchCategory}>
+    <li className="menu-category" onClick={handleFetchCategory} style={{cursor:"pointer"}}>
     <p className="menu-title">{props.name}</p>
   </li>
   )

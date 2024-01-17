@@ -18,7 +18,9 @@ const ProductMinimal = () => {
         )}
         {isLoading && (
           <>
-            {/* <ProductLoader /> */}
+            <ProductLoader />
+            <ProductLoader />
+            <ProductLoader />
           
           
           </>

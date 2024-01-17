@@ -50,9 +50,15 @@
 .header-main {
   padding: 20px 0;
   border-bottom: 1px solid var(--cultured);
+  position: fixed;
+  top:0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  z-index: 600;
 }
 
-.header-logo { margin-bottom: 0; }
+.header-logo { margin-bottom: 0;  color: inherit; cursor: pointer;}
 
 .header-logo img { margin: auto; }
 
@@ -157,7 +163,7 @@
   -webkit-transition: 0.5s ease;
   -o-transition: 0.5s ease;
   transition: 0.5s ease;
-  z-index: 20;
+  z-index: 700;
 }
 
 .mobile-navigation-menu.active {
