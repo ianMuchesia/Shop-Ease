@@ -1,15 +1,8 @@
+import UseFetchCategory from "@/lib/UseFetchCategory";
 import UseFocusManager from "@/lib/UseFocusManager";
 import { sidebarCategories } from "@/lib/data";
-import {
-  fetchCategoryProducts,
-  setCategoryName,
-} from "@/store/features/categorySlice";
-import { closeSidebar } from "@/store/features/sidebarsSlice";
-import { useAppDispatch } from "@/store/hooks";
 import Image from "next/image";
-import { useState } from "react";
-import { set } from "react-hook-form";
-import { IoAddOutline, IoRemoveOutline } from "react-icons/io5";
+
 
 interface CategoryAccordionsProps {
   title: string;
@@ -22,12 +15,11 @@ interface CategoryAccordionsProps {
 const CategoryAccordions = ({
   title,
   image,
-  content,
-  isActive,
-  setAccordion,
-}: CategoryAccordionsProps) => {
-  const dispatch = useAppDispatch();
 
+}: CategoryAccordionsProps) => {
+  
+
+  const { dispatchFetchCategory, dispatchCloseSidebar } = UseFetchCategory();
   const { setFocus} = UseFocusManager()
 
   //if category name matches, return the category object
@@ -40,23 +32,14 @@ const CategoryAccordions = ({
     if (!findCategory) {
       return;
     }
-    setAccordion(isActive ? null : title);
-
-    dispatch(
-      fetchCategoryProducts({
-        endpoint: findCategory?.endpoint,
-        actionType: findCategory?.actionType,
-      })
-    );
-
-    dispatch(setCategoryName(findCategory?.name));
-
-    dispatch(closeSidebar("category"));
+    
+    dispatchFetchCategory(findCategory)
+    dispatchCloseSidebar("category")
     setFocus("category-component")
   };
 
   return (
-    <li className="sidebar-menu-category">
+    <li className="sidebar-menu-category" onClick={handleFetchCategory}>
       <button className="sidebar-accordion-menu" data-accordion-btn>
         <div className="menu-title-flex">
           <Image
@@ -70,7 +53,7 @@ const CategoryAccordions = ({
           <p className="menu-title">{title}</p>
         </div>
 
-        <div>
+        {/* <div>
           {!isActive ? (
             <IoAddOutline
               className="ion-icon add-icon"
@@ -82,7 +65,7 @@ const CategoryAccordions = ({
               onClick={handleFetchCategory}
             />
           )}
-        </div>
+        </div> */}
       </button>
 
       {/* <ul className={`sidebar-submenu-category-list ${isActive && "active"}`}  data-accordion>

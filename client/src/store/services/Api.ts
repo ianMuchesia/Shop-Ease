@@ -8,7 +8,7 @@ export const api = createApi({
     
     }),
     reducerPath: "apis",
-    tagTypes:["allproducts","product", "categories"],
+    tagTypes:["allproducts","product", "categories","cosmetics"],
     endpoints: (builder) => ({
         getAllProducts: builder.query({
             query: () => `/products`,
@@ -22,7 +22,12 @@ export const api = createApi({
             query: () => `/categories`,
             providesTags: ["categories"],
         }),
+        getCosmetics: builder.query({
+            query: () => `/categories/daaa1b3e-e179-4964-9e02-18a76b035aad/products
+            `,
+            providesTags: ["cosmetics"],
+        })
     }),
 })
 
-export const {useGetAllProductsQuery, useGetProductQuery, useGetCategoriesQuery} = api;
+export const {useGetAllProductsQuery, useGetProductQuery, useGetCategoriesQuery, useGetCosmeticsQuery} = api;

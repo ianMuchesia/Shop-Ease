@@ -20,7 +20,7 @@
   -ms-scroll-chaining: none;
       overscroll-behavior: contain;
   visibility: hidden;
-  z-index: 20;
+  z-index: 700;
 } 
 
 .sidebar.active {

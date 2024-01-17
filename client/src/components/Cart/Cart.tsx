@@ -54,6 +54,7 @@ const Cart = () => {
         </div>
 
         <div className="cart-bottom">
+          <div className="cart-bottom-container">
           <div className="btn-container">
             <div className="total">
               <h3>Subtotal:</h3>
@@ -66,6 +67,7 @@ const Cart = () => {
               </button>
             </Link>
           </div>
+        </div>
         </div>
       </div>
     </div>

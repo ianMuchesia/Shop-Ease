@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 import { IoCallOutline, IoLocationOutline, IoLogoFacebook, IoLogoInstagram, IoLogoLinkedin, IoLogoTwitter,  IoMailOutline } from 'react-icons/io5'
 
@@ -16,66 +17,66 @@ const Footer = () => {
 
           <h3 className="category-box-title">Fashion :</h3>
 
-          <a href="#" className="footer-category-link">T-shirt</a>
-          <a href="#" className="footer-category-link">Shirts</a>
-          <a href="#" className="footer-category-link">shorts & jeans</a>
-          <a href="#" className="footer-category-link">jacket</a>
-          <a href="#" className="footer-category-link">dress & frock</a>
-          <a href="#" className="footer-category-link">innerwear</a>
-          <a href="#" className="footer-category-link">hosiery</a>
+          <Link href="/" className="footer-category-link">T-shirt</Link>
+          <Link href="/" className="footer-category-link">Shirts</Link>
+          <Link href="/" className="footer-category-link">shorts & jeans</Link>
+          <Link href="/" className="footer-category-link">jacket</Link>
+          <Link href="/" className="footer-category-link">dress & frock</Link>
+          <Link href="/" className="footer-category-link">innerwear</Link>
+          <Link href="/" className="footer-category-link">hosiery</Link>
 
         </div>
 
         <div className="footer-category-box">
           <h3 className="category-box-title">footwear :</h3>
         
-          <a href="#" className="footer-category-link">sport</a>
-          <a href="#" className="footer-category-link">formal</a>
-          <a href="#" className="footer-category-link">Boots</a>
-          <a href="#" className="footer-category-link">casual</a>
-          <a href="#" className="footer-category-link">cowboy shoes</a>
-          <a href="#" className="footer-category-link">safety shoes</a>
-          <a href="#" className="footer-category-link">Party wear shoes</a>
-          <a href="#" className="footer-category-link">Branded</a>
-          <a href="#" className="footer-category-link">Firstcopy</a>
-          <a href="#" className="footer-category-link">Long shoes</a>
+          <Link href="/" className="footer-category-link">sport</Link>
+          <Link href="/" className="footer-category-link">formal</Link>
+          <Link href="/" className="footer-category-link">Boots</Link>
+          <Link href="/" className="footer-category-link">casual</Link>
+          <Link href="/" className="footer-category-link">cowboy shoes</Link>
+          <Link href="/" className="footer-category-link">safety shoes</Link>
+          <Link href="/" className="footer-category-link">Party wear shoes</Link>
+          <Link href="/" className="footer-category-link">Branded</Link>
+          <Link href="/" className="footer-category-link">Firstcopy</Link>
+          <Link href="/" className="footer-category-link">Long shoes</Link>
         </div>
 
         <div className="footer-category-box">
           <h3 className="category-box-title">jewellery :</h3>
         
-          <a href="#" className="footer-category-link">Necklace</a>
-          <a href="#" className="footer-category-link">Earrings</a>
-          <a href="#" className="footer-category-link">Couple rings</a>
-          <a href="#" className="footer-category-link">Pendants</a>
-          <a href="#" className="footer-category-link">Crystal</a>
-          <a href="#" className="footer-category-link">Bangles</a>
-          <a href="#" className="footer-category-link">bracelets</a>
-          <a href="#" className="footer-category-link">nosepin</a>
-          <a href="#" className="footer-category-link">chain</a>
-          <a href="#" className="footer-category-link">Earrings</a>
-          <a href="#" className="footer-category-link">Couple rings</a>
+          <Link href="/" className="footer-category-link">Necklace</Link>
+          <Link href="/" className="footer-category-link">Earrings</Link>
+          <Link href="/" className="footer-category-link">Couple rings</Link>
+          <Link href="/" className="footer-category-link">Pendants</Link>
+          <Link href="/" className="footer-category-link">Crystal</Link>
+          <Link href="/" className="footer-category-link">Bangles</Link>
+          <Link href="/" className="footer-category-link">bracelets</Link>
+          <Link href="/" className="footer-category-link">nosepin</Link>
+          <Link href="/" className="footer-category-link">chain</Link>
+          <Link href="/" className="footer-category-link">Earrings</Link>
+          <Link href="/" className="footer-category-link">Couple rings</Link>
         </div>
 
         <div className="footer-category-box">
           <h3 className="category-box-title">cosmetics :</h3>
         
-          <a href="#" className="footer-category-link">Shampoo</a>
-          <a href="#" className="footer-category-link">Bodywash</a>
-          <a href="#" className="footer-category-link">Facewash</a>
-          <a href="#" className="footer-category-link">makeup kit</a>
-          <a href="#" className="footer-category-link">liner</a>
-          <a href="#" className="footer-category-link">lipstick</a>
-          <a href="#" className="footer-category-link">prefume</a>
-          <a href="#" className="footer-category-link">Body soap</a>
-          <a href="#" className="footer-category-link">scrub</a>
-          <a href="#" className="footer-category-link">hair gel</a>
-          <a href="#" className="footer-category-link">hair colors</a>
-          <a href="#" className="footer-category-link">hair dye</a>
-          <a href="#" className="footer-category-link">sunscreen</a>
-          <a href="#" className="footer-category-link">skin loson</a>
-          <a href="#" className="footer-category-link">liner</a>
-          <a href="#" className="footer-category-link">lipstick</a>
+          <Link href="/" className="footer-category-link">Shampoo</Link>
+          <Link href="/" className="footer-category-link">Bodywash</Link>
+          <Link href="/" className="footer-category-link">Facewash</Link>
+          <Link href="/" className="footer-category-link">makeup kit</Link>
+          <Link href="/" className="footer-category-link">liner</Link>
+          <Link href="/" className="footer-category-link">lipstick</Link>
+          <Link href="/" className="footer-category-link">prefume</Link>
+          <Link href="/" className="footer-category-link">Body soap</Link>
+          <Link href="/" className="footer-category-link">scrub</Link>
+          <Link href="/" className="footer-category-link">hair gel</Link>
+          <Link href="/" className="footer-category-link">hair colors</Link>
+          <Link href="/" className="footer-category-link">hair dye</Link>
+          <Link href="/" className="footer-category-link">sunscreen</Link>
+          <Link href="/" className="footer-category-link">skin loson</Link>
+          <Link href="/" className="footer-category-link">liner</Link>
+          <Link href="/" className="footer-category-link">lipstick</Link>
         </div>
 
       </div>
@@ -93,23 +94,23 @@ const Footer = () => {
           </li>
 
           <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">Fashion</a>
+            <Link href="/" className="footer-nav-link">Fashion</Link>
           </li>
 
           <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">Electronic</a>
+            <Link href="/" className="footer-nav-link">Electronic</Link>
           </li>
 
           <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">Cosmetic</a>
+            <Link href="/" className="footer-nav-link">Cosmetic</Link>
           </li>
 
           <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">Health</a>
+            <Link href="/" className="footer-nav-link">Health</Link>
           </li>
 
           <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">Watches</a>
+            <Link href="/" className="footer-nav-link">Watches</Link>
           </li>
 
         </ul>
@@ -121,23 +122,23 @@ const Footer = () => {
           </li>
         
           <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">Prices drop</a>
+            <Link href="/" className="footer-nav-link">Prices drop</Link>
           </li>
         
           <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">New products</a>
+            <Link href="/" className="footer-nav-link">New products</Link>
           </li>
         
           <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">Best sales</a>
+            <Link href="/" className="footer-nav-link">Best sales</Link>
           </li>
         
           <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">Contact us</a>
+            <Link href="/" className="footer-nav-link">Contact us</Link>
           </li>
         
           <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">Sitemap</a>
+            <Link href="/" className="footer-nav-link">Sitemap</Link>
           </li>
         
         </ul>
@@ -149,23 +150,23 @@ const Footer = () => {
           </li>
         
           <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">Delivery</a>
+            <Link href="/" className="footer-nav-link">Delivery</Link>
           </li>
         
           <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">Legal Notice</a>
+            <Link href="/" className="footer-nav-link">Legal Notice</Link>
           </li>
         
           <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">Terms and conditions</a>
+            <Link href="/" className="footer-nav-link">Terms and conditions</Link>
           </li>
         
           <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">About us</a>
+            <Link href="/" className="footer-nav-link">About us</Link>
           </li>
         
           <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">Secure payment</a>
+            <Link href="/" className="footer-nav-link">Secure payment</Link>
           </li>
         
         </ul>
@@ -177,23 +178,23 @@ const Footer = () => {
           </li>
         
           <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">Prices drop</a>
+            <Link href="/" className="footer-nav-link">Prices drop</Link>
           </li>
         
           <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">New products</a>
+            <Link href="/" className="footer-nav-link">New products</Link>
           </li>
         
           <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">Best sales</a>
+            <Link href="/" className="footer-nav-link">Best sales</Link>
           </li>
         
           <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">Contact us</a>
+            <Link href="/" className="footer-nav-link">Contact us</Link>
           </li>
         
           <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">Sitemap</a>
+            <Link href="/" className="footer-nav-link">Sitemap</Link>
           </li>
         
         </ul>
@@ -242,28 +243,28 @@ const Footer = () => {
             <ul className="social-link">
 
               <li className="footer-nav-item">
-                <a href="#" className="footer-nav-link">
+                <Link href="/" className="footer-nav-link">
                   <IoLogoFacebook className="ion-icon" />
-                </a>
+                </Link>
               </li>
 
               <li className="footer-nav-item">
-                <a href="#" className="footer-nav-link">
+                <Link href="/" className="footer-nav-link">
                   <IoLogoTwitter className="ion-icon" />
-                </a>
+                </Link>
               </li>
 
               <li className="footer-nav-item">
-                <a href="#" className="footer-nav-link">
+                <Link href="/" className="footer-nav-link">
                 
                   <IoLogoLinkedin className="ion-icon" />
-                </a>
+                </Link>
               </li>
 
               <li className="footer-nav-item">
-                <a href="#" className="footer-nav-link">
+                <Link href="/" className="footer-nav-link">
                   <IoLogoInstagram className="ion-icon" />
-                </a>
+                </Link>
               </li>
 
             </ul>
@@ -282,7 +283,7 @@ const Footer = () => {
         <Image  height={30} width={300} src="/images/payment.png" alt="payment method" className="payment-img"/>
 
         <p className="copyright">
-          Copyright &copy; <a href="#">Msodoki</a> all rights reserved. <span>{new Date().getFullYear()}</span>
+          Copyright &copy; <Link href="/">Msodoki</Link> all rights reserved. <span>{new Date().getFullYear()}</span>
         </p>
 
       </div>

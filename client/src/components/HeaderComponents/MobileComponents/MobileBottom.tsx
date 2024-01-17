@@ -2,6 +2,7 @@ import { SidebarName } from '@/@types'
 import { openSidebar } from '@/store/features/sidebarsSlice'
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import React from 'react'
+import toast from 'react-hot-toast'
 import {  IoBagOutline, IoGridOutline, IoHeartOutline, IoHomeOutline, IoMenuOutline } from 'react-icons/io5'
 
 
@@ -34,7 +35,7 @@ const MobileBottom = () => {
 
         <button className="action-btn">
         <IoHeartOutline className="ion-icon md-hydrated" 
-        onClick={()=>HandleOpenSidebar("wish")}
+        onClick={()=>{toast.error("Feature not available")}}
         />
 
           <span className="count">0</span>

@@ -178,4 +178,47 @@ export const sidebarCategories = [
     endpoint: "categories/a8533b7e-2ef6-4305-9101-ffdef8c35da5/products",
     actionType: "category/fetchShortsProducts",
   },
+  {
+    name: "Jackets",
+    endpoint: "categories/ebf38767-f028-447a-8f6f-908ea2e271cf/products",
+    actionType: "category/fetchJacketsProducts",
+  }
 ];
+
+
+
+export const desktopCategories = [
+
+  {
+    id:1,
+    name:"Women's",
+    image:"dress.svg"
+  },
+  {
+    id:2,
+    name:"Jackets",
+    image:"coat.svg"
+  },
+  {
+    id:3,
+    name:"Glasses",
+    image:"glasses.svg"
+  },
+  {
+    id:4,
+    name:"Shorts",
+    image:"shorts.svg"
+  },
+  {
+    id:5,
+    name:"Shirts",
+    image:"tee.svg"
+  },
+  {
+    id:6,
+    name:"Watches",
+    image:"watch.svg"
+  },
+ 
+
+]
