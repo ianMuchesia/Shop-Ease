@@ -23,7 +23,7 @@ export const api = createApi({
             providesTags: ["categories"],
         }),
         getCosmetics: builder.query({
-            query: () => `/categories/daaa1b3e-e179-4964-9e02-18a76b035aad/products
+            query: () => `/categories/03ad39af-1e85-4fad-9b91-2775b0538cab/products
             `,
             providesTags: ["cosmetics"],
         })
